@@ -1,10 +1,11 @@
 import { useMutation } from '@apollo/client';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { COMPLETE_KAKAO_CERTIFICATION } from '../../query/mutation';
+import { COMPLETE_KAKAO_AUTHENTICATION } from '../../query/mutation';
+import { JwtStorageService } from '../../services/auth/jwt-storage.service';
 
 function AuthCallback() {
-  const [completeAuth, { loading, error }] = useMutation(COMPLETE_KAKAO_CERTIFICATION);
+  const [kakaoAuth, { loading, error }] = useMutation(COMPLETE_KAKAO_AUTHENTICATION);
   const location = useLocation();
   const [message, setMessage] = useState('Completing authentication');
 
@@ -12,11 +13,11 @@ function AuthCallback() {
     const searchParam = new URLSearchParams(location.search);
     const code = searchParam.get('code');
     if (code) {
-      completeAuth({ variables: { code } })
+      kakaoAuth({ variables: { code } })
         .then(({ data }) => {
           console.log('## data', data);
-          localStorage.setItem('accessToken', data.kakaoAuth.accessToken);
-          localStorage.setItem('refreshToken', data.kakaoAuth.refreshToken);
+          JwtStorageService.setAccessToken(data.kakaoAuth.accessToken);
+          JwtStorageService.setRefreshToken(data.kakaoAuth.refreshToken);
           setMessage('Authentication successful. Redirecting...');
           setTimeout(() => {
             window.location.href = '/home';
@@ -29,7 +30,7 @@ function AuthCallback() {
     } else {
       setMessage('No authentication code found.');
     }
-  }, [completeAuth, location]);
+  }, [kakaoAuth, location]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
