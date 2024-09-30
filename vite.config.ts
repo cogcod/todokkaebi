@@ -7,21 +7,23 @@ export default defineConfig({
   plugins: [react()],
   // base: process.env.NODE_ENV === "development" ? "/" : "./",
   server: {
-    port: 5000, // 서버 포트 번호 변경
+    port: 3000, // 서버 포트 번호 변경
   },
   define: {
     global: '{}', // 글로벌 객체를 빈 객체로 대체
   },
   build: {
     outDir: 'build', // build 폴더명 변경
-    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]',
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        },
       },
     },
+    chunkSizeWarningLimit: 1600,
   },
   resolve: {
     alias: [
