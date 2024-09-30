@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   // base: process.env.NODE_ENV === "development" ? "/" : "./",
   server: {
-    port: 3000, // 서버 포트 번호 변경
+    port: 5000, // 서버 포트 번호 변경
   },
   define: {
     global: '{}', // 글로벌 객체를 빈 객체로 대체
