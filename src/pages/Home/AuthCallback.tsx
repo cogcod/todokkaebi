@@ -1,18 +1,10 @@
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
-const COMPLETE_MUTATION = gql`
-  mutation KakaoAuth($code: String!) {
-    kakaoAuth(input: { code: $code }) {
-      accessToken
-      refreshToken
-    }
-  }
-`;
+import { COMPLETE_KAKAO_CERTIFICATION } from '../../query/mutation';
 
 function AuthCallback() {
-  const [completeAuth, { loading, error }] = useMutation(COMPLETE_MUTATION);
+  const [completeAuth, { loading, error }] = useMutation(COMPLETE_KAKAO_CERTIFICATION);
   const location = useLocation();
   const [message, setMessage] = useState('Completing authentication');
 
@@ -44,6 +36,7 @@ function AuthCallback() {
 
   return (
     <>
+      <div>카카오 로그인 진행중...:D</div>
       <div>{message}</div>
     </>
   );

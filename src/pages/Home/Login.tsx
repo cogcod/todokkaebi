@@ -1,13 +1,6 @@
-import { gql, useQuery, useReactiveVar } from '@apollo/client';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import examValue from '../../modules/exam';
-
-const GET_KAKAO_AUTH_URL = gql`
-  query GetKakaoLoginUrl {
-    getKakaoLoginUrl {
-      url
-    }
-  }
-`;
+import { GET_KAKAO_AUTH_URL } from '../../query/query';
 
 function Login() {
   const { loading, error, data } = useQuery(GET_KAKAO_AUTH_URL);
