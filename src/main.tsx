@@ -32,7 +32,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 // error, auth 링크 하나로 결합하여 순서대로 처리
-const httpLink = new HttpLink({ uri: 'http://54.180.61.91:5000/graphql/' });
+const httpLink = new HttpLink({ uri: 'https://aws-api-todo.cothi.net/graphql' });
 const link = ApolloLink.from([errorLink, authLink.concat(httpLink)]);
 
 const client = new ApolloClient({
