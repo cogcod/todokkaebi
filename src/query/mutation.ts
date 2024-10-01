@@ -37,6 +37,8 @@ export const UPDATE_USER_INFO = gql`
 // 회원 탈퇴
 export const DELETE_USER = gql`
   mutation DeleteUser {
-    deleteUser
+    deleteUser {
+      success
+    }
   }
 `;
