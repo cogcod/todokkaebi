@@ -2,8 +2,10 @@ import { useQuery, useReactiveVar } from '@apollo/client';
 import examValue from '../../modules/exam';
 import { GET_KAKAO_AUTH_URL } from '../../query/query';
 import { ReactComponent as KakaoLogo } from '/src/assets/images/kakao_logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
   const { loading, error, data } = useQuery(GET_KAKAO_AUTH_URL);
   const exam = useReactiveVar(examValue);
   console.log('apollo 전역변수 test ==>', exam);
@@ -15,7 +17,7 @@ function Login() {
     }
   };
   const moveToHome = () => {
-    window.location.href = '/home';
+    navigate('/home');
   };
 
   if (loading) return <p>Loading...</p>;

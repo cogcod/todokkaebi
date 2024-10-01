@@ -1,10 +1,11 @@
 import { useMutation } from '@apollo/client';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { COMPLETE_KAKAO_AUTHENTICATION } from '../../query/mutation';
 import { JwtStorageService } from '../../services/auth/jwt-storage.service';
 
 function AuthCallback() {
+  const navigate = useNavigate();
   const [kakaoAuth, { loading, error }] = useMutation(COMPLETE_KAKAO_AUTHENTICATION);
   const location = useLocation();
   const [message, setMessage] = useState('Completing authentication');
@@ -20,7 +21,7 @@ function AuthCallback() {
           JwtStorageService.setRefreshToken(data.kakaoAuth.refreshToken);
           setMessage('Authentication successful. Redirecting...');
           setTimeout(() => {
-            window.location.href = '/home';
+            navigate('/home');
           }, 2000);
         })
         .catch(err => {

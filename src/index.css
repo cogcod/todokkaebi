@@ -24,8 +24,9 @@
   #root {
     display: flex;
     flex-direction: column;
-    height: 100%;
     padding: 0 1.25rem;
+    height: 100vh;
+    min-height: 23.4375rem;
     width: 26.875rem;
     min-width: 21.5rem;
     background-color: theme('colors.white');
@@ -34,10 +35,19 @@
 
 /* custom style */
 @layer components {
+  /* 풀 버튼 */
   .btn-full {
     width: 100%;
     text-align: center;
-    /* background: theme('colors.gr-50'); */
+  }
+  /* 가운데 정렬 */
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .half {
+    width: calc(100% - 2.5rem);
   }
 }
 
