@@ -29,7 +29,7 @@ export default {
       pretendard: ['Pretendard', 'sans-serif'],
     },
     fontSize: {
-      12: '0.75rem', // font-12
+      12: '0.75rem', // text-12
       14: '0.875rem',
       16: '1rem',
       18: '1.125rem',
@@ -46,16 +46,15 @@ export default {
     },
     extend: {
       spacing: {
-        13: '3.25rem', // p-13, m-13, h-13
-        15: '3.75rem',
-        128: '32rem',
-        144: '36rem',
+        13: '3.25rem', // p-13, m-13, w-13, h-13
+        219: '13.6875rem',
       },
       borderRadius: {
-        'br-4': '0.25rem',
-        'br-6': '0.375rem',
-        'br-12': '0.75rem',
-        'br-16': '1rem',
+        4: '0.25rem', // rounded-4
+        6: '0.375rem',
+        12: '0.75rem',
+        16: '1rem',
+        20: '1.25rem',
       },
     },
   },

@@ -15,18 +15,30 @@
   html,
   body {
     @apply font-pretendard;
-    color: #505458;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: theme('colors.gr-50');
+  }
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 1.25rem;
+    width: 26.875rem;
+    min-width: 21.5rem;
+    background-color: theme('colors.white');
   }
 }
 
 /* custom style */
 @layer components {
-  /* .card {
-    background-color: theme('colors.white');
-    border-radius: theme('borderRadius.lg');
-    padding: theme('spacing.6');
-    box-shadow: theme('boxShadow.xl');
-  } */
+  .btn-full {
+    width: 100%;
+    text-align: center;
+    /* background: theme('colors.gr-50'); */
+  }
 }
 
 /* tailwind에 없는 스타일 적용 시 사용 */

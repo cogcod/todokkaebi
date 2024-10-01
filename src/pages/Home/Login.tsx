@@ -1,7 +1,7 @@
 import { useQuery, useReactiveVar } from '@apollo/client';
 import examValue from '../../modules/exam';
 import { GET_KAKAO_AUTH_URL } from '../../query/query';
-import { ReactComponent as KakaoLogin } from '/src/assets/images/kakao_login.svg';
+import { ReactComponent as KakaoLogo } from '/src/assets/images/kakao_logo.svg';
 
 function Login() {
   const { loading, error, data } = useQuery(GET_KAKAO_AUTH_URL);
@@ -23,26 +23,26 @@ function Login() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="flex w-full justify-center sm:mx-auto sm:w-full sm:max-w-sm text-6xl">👹</div>
-        <div className="text-sc-700 text-28 font-semi flex w-full justify-center my-10 ">
-          투두깨비에 오신 것을 환영합니다!😄
+      <div className="flex min-h-full flex-1 flex-col justify-center text-center">
+        <div className="w-52 h-56 bg-gr-50 rounded-20 mx-auto mb-[30px]"></div>
+        <div className="mb-[132px]">
+          <div className="text-pr-700 text-28 font-semi mb-[16px]">
+            투두깨비와 함께
+            <br />
+            자기계발에 성공해 보세요!
+          </div>
+          <p className="text-18 text-gr-700">한 눈에 보는 나의 성장 과정</p>
         </div>
-        <div className="w-full justify-center sm:mx-auto sm:w-full sm:max-w-sm">
+        <div>
           <button
-            type="submit"
-            className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex justify-center items-center py-[14.5px] mb-[24px] btn-full bg-[#FEE500] rounded-6"
             onClick={handleKakaoLogin}
           >
-            KAKAO LOGIN
+            <KakaoLogo />
+            <p className="ml-[8px]">카카오 로그인</p>
           </button>
-          <KakaoLogin />
-          <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            onClick={moveToHome}
-          >
-            건너뛰기
+          <button className="btn-full text-gr-700" onClick={moveToHome}>
+            로그인 없이 둘러보기
           </button>
         </div>
       </div>
