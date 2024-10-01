@@ -13,7 +13,7 @@ export default {
       // => @media (min-width: 1280px) { ... }
     },
     colors: {
-      'pm-500': '#FF5D05',
+      'pm-500': '#FF5D05', // text-pm-500
       'pm-700': '#B54204',
       'sc-700': '#8A9910',
       'sc-800': '#6F7B0D',
@@ -28,23 +28,23 @@ export default {
     fontFamily: {
       pretendard: ['Pretendard', 'sans-serif'],
     },
+    fontSize: {
+      12: '0.75rem', // font-12
+      14: '0.875rem',
+      16: '1rem',
+      18: '1.125rem',
+      20: '1.25rem',
+      22: '1.375rem',
+      24: '1.5rem',
+      26: '1.625rem',
+      28: '1.75rem',
+    },
+    fontWeight: {
+      regular: '400', // font-400
+      semi: '600',
+      bold: '800',
+    },
     extend: {
-      fontSize: {
-        12: '0.75rem',
-        14: '0.875rem',
-        16: '1rem',
-        18: '1.125rem',
-        20: '1.25rem',
-        22: '1.375rem',
-        24: '1.5rem',
-        26: '1.625rem',
-        28: '1.75rem',
-      },
-      fontWeight: {
-        regular: '400',
-        semi: '600',
-        bold: '800',
-      },
       spacing: {
         13: '3.25rem', // p-13, m-13, h-13
         15: '3.75rem',
@@ -62,25 +62,25 @@ export default {
   plugins: [
     plugin(function ({ addComponents }) {
       addComponents({
-        '.btn': {
-          padding: '.5rem 1rem',
-          borderRadius: '.25rem',
-          fontWeight: '600',
-        },
-        '.btn-blue': {
-          backgroundColor: '#3490dc',
-          color: '#fff',
-          '&:hover': {
-            backgroundColor: '#2779bd',
-          },
-        },
-        '.btn-red': {
-          backgroundColor: '#e3342f',
-          color: '#fff',
-          '&:hover': {
-            backgroundColor: '#cc1f1a',
-          },
-        },
+        // '.btn': {
+        //   padding: '.5rem 1rem',
+        //   borderRadius: '.25rem',
+        //   fontWeight: '600',
+        // },
+        // '.btn-blue': {
+        //   backgroundColor: '#3490dc',
+        //   color: '#fff',
+        //   '&:hover': {
+        //     backgroundColor: '#2779bd',
+        //   },
+        // },
+        // '.btn-red': {
+        //   backgroundColor: '#e3342f',
+        //   color: '#fff',
+        //   '&:hover': {
+        //     backgroundColor: '#cc1f1a',
+        //   },
+        // },
       });
     }),
   ],

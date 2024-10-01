@@ -12,12 +12,26 @@
 
 /* default style */
 @layer base {
+  html,
   body {
     @apply font-pretendard;
+    color: #505458;
   }
 }
 
-/* components style */
+/* custom style */
 @layer components {
-  /* .my-custom-style {} */
+  /* .card {
+    background-color: theme('colors.white');
+    border-radius: theme('borderRadius.lg');
+    padding: theme('spacing.6');
+    box-shadow: theme('boxShadow.xl');
+  } */
+}
+
+/* tailwind에 없는 스타일 적용 시 사용 */
+@layer utilities {
+  /* .content-auto {
+      content-visibility: auto;
+    } */
 }

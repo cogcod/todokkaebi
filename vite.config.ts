@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import svgr from '@svgr/rollup';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr()],
   // base: process.env.NODE_ENV === "development" ? "/" : "./",
   server: {
     port: 3000, // 서버 포트 번호 변경
