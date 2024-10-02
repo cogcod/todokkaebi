@@ -16,7 +16,10 @@ function HomeCard() {
   };
 
   return (
-    <div onClick={moveToDetail} className="flex flex-col w-full h-[6.625rem] rounded-16 pt-16 px-16 pb-12 bg-white">
+    <div
+      onClick={moveToDetail}
+      className="flex flex-col mb-20 w-full h-[6.625rem] rounded-16 pt-16 px-16 pb-12 bg-white"
+    >
       <div className="flex justify-between">
         <div className="w-[42px] h-[42px] bg-gr-400"></div>
         <div className="flex flex-col">

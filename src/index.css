@@ -31,6 +31,7 @@
     /* width: 26.875rem; 아이폰 14pro max 기준 */
     min-width: 21.5rem;
     background-color: theme('colors.white');
+    overflow: hidden;
   }
 }
 
@@ -46,6 +47,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  /* list - 첫번째 요소를 제외한 나머지 */
+  .item:not(:first-child) {
+    margin-top: 1.25rem;
   }
 }
 

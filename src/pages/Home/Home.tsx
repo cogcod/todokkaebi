@@ -43,7 +43,16 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="px-20 pt-24">
+          <div
+            className="px-20 pt-24 overflow-y-scroll"
+            style={{
+              height: 'calc(100% - 13.4375rem)',
+            }}
+          >
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
             <HomeCard />
           </div>
         </div>
