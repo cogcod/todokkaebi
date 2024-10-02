@@ -2,6 +2,7 @@
 import dayjs from 'dayjs';
 import Header from '../Layout/Header';
 import Navigation from '../Layout/Navigation';
+import HomeCard from './HomeCard';
 
 function Home() {
   // const navigate = useNavigate()
@@ -33,7 +34,9 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="px-20 pt-24">카드 영역</div>
+          <div className="px-20 pt-24">
+            <HomeCard />
+          </div>
         </div>
         <Navigation />
       </div>

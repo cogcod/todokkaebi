@@ -14,7 +14,9 @@ export default {
     },
     colors: {
       'pm-700': '#B54204',
+      'pm-600': '#D94F04',
       'pm-500': '#FF5D05', // text-pm-500
+      'pm-450': '#FF6F42',
       'pm-400': '#FFF3ED',
       'pm-300': '#FFEFE6',
       'sc-800': '#6F7B0D',
@@ -24,6 +26,8 @@ export default {
       'gr-600': '#8E9398',
       'gr-500': '#B5B9BD',
       'gr-400': '#D4D8DC',
+      'gr-200': '#E2E5E8',
+      'gr-100': '#ECEEF0',
       'gr-50': '#F3F4F5',
       white: '#ffffff',
       black: '#000000',
@@ -50,6 +54,10 @@ export default {
     },
     extend: {
       spacing: {
+        4: '.25rem',
+        6: '.375rem',
+        8: '.5rem',
+        10: '.625rem',
         12: '0.75rem', // p-12, m-12, w-12, h-12
         14: '0.875rem',
         16: '1rem',

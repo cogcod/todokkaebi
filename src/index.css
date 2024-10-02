@@ -27,7 +27,8 @@
     /* padding: 0 1.25rem; */
     height: 100vh;
     min-height: 23.4375rem;
-    width: 26.875rem;
+    width: 24.375rem;
+    /* width: 26.875rem; 아이폰 14pro max 기준 */
     min-width: 21.5rem;
     background-color: theme('colors.white');
   }

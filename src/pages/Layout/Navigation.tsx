@@ -8,6 +8,9 @@ function Navigation() {
   const moveToHome = () => {
     navigate('/home');
   };
+  const moveToCalendar = () => {
+    alert('준비중입니다!');
+  };
 
   return (
     <div className="relative shrink-0 h-[60px] w-full bg-white border-t border-gr-400">
@@ -20,7 +23,7 @@ function Navigation() {
             <p className="text-pm-500 text-14">홈</p>
           </div>
         </div>
-        <div className="flex-center w-1/2 text-center">
+        <div onClick={moveToCalendar} className="flex-center w-1/2 text-center">
           <div>
             <div className="flex-center">
               <CalendarUnselected />
