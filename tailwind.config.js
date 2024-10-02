@@ -15,6 +15,7 @@ export default {
     colors: {
       'pm-700': '#B54204',
       'pm-600': '#D94F04',
+      'pm-550': '#F25A2B',
       'pm-500': '#FF5D05', // text-pm-500
       'pm-450': '#FF6F42',
       'pm-400': '#FFF3ED',
