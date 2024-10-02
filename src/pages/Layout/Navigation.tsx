@@ -1,12 +1,18 @@
 import { ReactComponent as HomeSelected } from '/src/assets/images/navi_home_selected.svg';
 import { ReactComponent as CalendarUnselected } from '/src/assets/images/navi_calendar_unselected.svg';
 import { ReactComponent as Plus } from '/src/assets/images/navi_plus.svg';
+import { useNavigate } from 'react-router-dom';
 
 function Navigation() {
+  const navigate = useNavigate();
+  const moveToHome = () => {
+    navigate('/home');
+  };
+
   return (
     <div className="relative shrink-0 h-[60px] w-full bg-white border-t border-gr-400">
       <div className="flex h-full">
-        <div className="flex-center w-1/2 align-center text-center">
+        <div onClick={moveToHome} className="flex-center w-1/2 align-center text-center">
           <div>
             <div className="flex-center">
               <HomeSelected />
