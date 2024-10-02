@@ -1,5 +1,4 @@
-import { useQuery, useReactiveVar } from '@apollo/client';
-import examValue from '../../modules/exam';
+import { useQuery } from '@apollo/client';
 import { GET_KAKAO_AUTH_URL } from '../../query/query';
 import { ReactComponent as KakaoLogo } from '/src/assets/images/kakao_logo.svg';
 import { useNavigate } from 'react-router-dom';
@@ -7,9 +6,6 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
   const navigate = useNavigate();
   const { loading, error, data } = useQuery(GET_KAKAO_AUTH_URL);
-  const exam = useReactiveVar(examValue);
-  console.log('apollo 전역변수 test ==>', exam);
-  // examValue('state 값 변경');
 
   const handleKakaoLogin = () => {
     if (data && data.getKakaoLoginUrl) {

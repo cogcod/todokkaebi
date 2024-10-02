@@ -68,6 +68,7 @@ export default {
         24: '1.5rem',
         26: '1.625rem',
         28: '1.75rem',
+        32: '2rem',
         inner: 'calc(100% - 120px)', // h-inner : 헤더/네비 제외한 영역
       },
       borderRadius: {
