@@ -28,7 +28,7 @@ function DefaultAlert() {
           onClick={closeModal}
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 "
         >
-          <div className="overflow-hidden flex flex-col justify-between bg-white rounded-lg shadow-lg max-w-md w-full text-center w-[17.125rem] h-[11.125rem]">
+          <div className="overflow-hidden flex flex-col justify-between bg-white rounded-lg shadow-lg text-center w-[17.125rem] h-[11.125rem]">
             <div className="px-10 py-24">
               <h2 className="h-26 mb-8 text-18 font-semi">로그인</h2>
               <p className="text-gr-700 font-regular text-16 mb-6">
