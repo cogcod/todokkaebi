@@ -2,14 +2,31 @@ import { ReactComponent as HomeSelected } from '/src/assets/images/navi_home_sel
 import { ReactComponent as CalendarUnselected } from '/src/assets/images/navi_calendar_unselected.svg';
 import { ReactComponent as Plus } from '/src/assets/images/navi_plus.svg';
 import { useNavigate } from 'react-router-dom';
+import alertValue from '../../modules/alert';
+import { appUtils } from '../../utils/utils';
 
 function Navigation() {
   const navigate = useNavigate();
+
+  // 홈
   const moveToHome = () => {
     navigate('/home');
   };
+  // 캘린더
   const moveToCalendar = () => {
-    alert('준비중입니다!');
+    if (!appUtils.isLoggedIn()) {
+      alertValue(true);
+    } else {
+      alert('준비중입니다');
+    }
+  };
+  // 계획 설정
+  const moveToSetting = () => {
+    if (!appUtils.isLoggedIn()) {
+      alertValue(true);
+    } else {
+      alert('준비중입니다');
+    }
   };
 
   return (
@@ -32,7 +49,10 @@ function Navigation() {
           </div>
         </div>
       </div>
-      <div className="absolute left-1/2 -top-24 transform -translate-x-1/2 flex-center w-[60px] h-[60px] bg-pm-300 rounded-12">
+      <div
+        onClick={moveToSetting}
+        className="absolute left-1/2 -top-24 transform -translate-x-1/2 flex-center w-[60px] h-[60px] bg-pm-300 rounded-12"
+      >
         <Plus />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { JwtStorageService } from '../services/auth/jwt-storage.service';
 import { GaugeBarProps } from './interface';
 
 // 게이지 바
@@ -12,4 +13,15 @@ export const GaugeBar: React.FC<GaugeBarProps> = ({ value, max }) => {
       />
     </div>
   );
+};
+
+export const appUtils = {
+  /**
+   * 로그인한 유저 확인
+   * @returns boolean
+   */
+  isLoggedIn: () => {
+    const token = JwtStorageService.getToken();
+    return !!token;
+  },
 };

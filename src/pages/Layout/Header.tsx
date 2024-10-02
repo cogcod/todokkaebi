@@ -1,10 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Avatar } from '/src/assets/images/avatar.svg';
+import { appUtils } from '../../utils/utils';
+import alertValue from '../../modules/alert';
 
 function Header() {
   const navigate = useNavigate();
+
+  // 마이페이지
   const moveToMyPage = () => {
-    navigate('/mypage');
+    if (!appUtils.isLoggedIn()) {
+      alertValue(true);
+    } else {
+      navigate('/mypage');
+    }
   };
   const moveToHome = () => {
     navigate('/home');

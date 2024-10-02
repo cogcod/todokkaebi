@@ -1,12 +1,22 @@
 import { useState } from 'react';
-import { GaugeBar } from '../../utils/utils';
+import { appUtils, GaugeBar } from '../../utils/utils';
 import { ReactComponent as Alarm } from '/src/assets/images/card_alarm.svg';
+import alertValue from '../../modules/alert';
 
 function HomeCard() {
   const [isComplete, setIsComplete] = useState(false);
 
+  // 카드 상세
+  const moveToDetail = () => {
+    if (!appUtils.isLoggedIn()) {
+      alertValue(true);
+    } else {
+      alert('준비중입니다');
+    }
+  };
+
   return (
-    <div className="flex flex-col w-full h-[6.625rem] rounded-16 pt-16 px-16 pb-12 bg-white">
+    <div onClick={moveToDetail} className="flex flex-col w-full h-[6.625rem] rounded-16 pt-16 px-16 pb-12 bg-white">
       <div className="flex justify-between">
         <div className="w-[42px] h-[42px] bg-gr-400"></div>
         <div className="flex flex-col">

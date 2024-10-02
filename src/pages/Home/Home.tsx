@@ -5,13 +5,19 @@ import Navigation from '../Layout/Navigation';
 import HomeCard from './HomeCard';
 import DefaultAlert from '../Common/DefaultAlert';
 import alertValue from '../../modules/alert';
+import { appUtils } from '../../utils/utils';
 
 function Home() {
   // const navigate = useNavigate()
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
 
+  // 다짐하기
   const handleMakeAPromise = () => {
-    alertValue(true);
+    if (!appUtils.isLoggedIn()) {
+      alertValue(true);
+    } else {
+      alert('준비중입니다');
+    }
   };
 
   return (
@@ -41,8 +47,8 @@ function Home() {
             <HomeCard />
           </div>
         </div>
-        <DefaultAlert />
         <Navigation />
+        <DefaultAlert />
       </div>
     </>
   );
