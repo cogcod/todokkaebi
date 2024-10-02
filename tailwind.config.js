@@ -6,7 +6,7 @@ export default {
   theme: {
     screens: {
       tablet: '640px',
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 640px) { .`.. }
       laptop: '1024px',
       // => @media (min-width: 1024px) { ... }
       desktop: '1280px',
@@ -15,6 +15,7 @@ export default {
     colors: {
       'pm-700': '#B54204',
       'pm-500': '#FF5D05', // text-pm-500
+      'pm-400': '#FFF3ED',
       'pm-300': '#FFEFE6',
       'sc-800': '#6F7B0D',
       'sc-700': '#8A9910',
@@ -26,6 +27,7 @@ export default {
       'gr-50': '#F3F4F5',
       white: '#ffffff',
       black: '#000000',
+      'black-100': '#252729',
     },
     fontFamily: {
       pretendard: ['Pretendard', 'sans-serif'],
@@ -57,11 +59,12 @@ export default {
         24: '1.5rem',
         26: '1.625rem',
         28: '1.75rem',
-        inner: 'calc(100% - 120px)', // h-inner
+        inner: 'calc(100% - 120px)', // h-inner : 헤더/네비 제외한 영역
       },
       borderRadius: {
         4: '0.25rem', // rounded-4
         6: '0.375rem',
+        8: '.5rem',
         12: '0.75rem',
         16: '1rem',
         20: '1.25rem',
