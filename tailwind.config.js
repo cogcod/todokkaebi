@@ -13,14 +13,16 @@ export default {
       // => @media (min-width: 1280px) { ... }
     },
     colors: {
-      'pm-500': '#FF5D05', // text-pm-500
       'pm-700': '#B54204',
-      'sc-700': '#8A9910',
+      'pm-500': '#FF5D05', // text-pm-500
+      'pm-300': '#FFEFE6',
       'sc-800': '#6F7B0D',
+      'sc-700': '#8A9910',
       'gr-800': '#3A3D40',
       'gr-700': '#505458',
       'gr-600': '#8E9398',
       'gr-500': '#B5B9BD',
+      'gr-400': '#D4D8DC',
       'gr-50': '#F3F4F5',
       white: '#ffffff',
       black: '#000000',
@@ -46,8 +48,16 @@ export default {
     },
     extend: {
       spacing: {
-        13: '3.25rem', // p-13, m-13, w-13, h-13
-        219: '13.6875rem',
+        12: '0.75rem', // p-12, m-12, w-12, h-12
+        14: '0.875rem',
+        16: '1rem',
+        18: '1.125rem',
+        20: '1.25rem',
+        22: '1.375rem',
+        24: '1.5rem',
+        26: '1.625rem',
+        28: '1.75rem',
+        inner: 'calc(100% - 120px)', // h-inner
       },
       borderRadius: {
         4: '0.25rem', // rounded-4
