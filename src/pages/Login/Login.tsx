@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { GET_KAKAO_AUTH_URL } from '../../query/query';
-import { ReactComponent as KakaoLogo } from '/src/assets/images/kakao_logo.svg';
+import { ReactComponent as KakaoLogo } from '/src/assets/icons/kakao_logo.svg';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {

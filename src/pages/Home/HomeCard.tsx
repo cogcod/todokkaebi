@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { appUtils, GaugeBar } from '../../utils/utils';
-import { ReactComponent as Alarm } from '/src/assets/images/card_alarm.svg';
+import { ReactComponent as Alarm } from '/src/assets/icons/card_alarm.svg';
 import alertValue from '../../modules/alert';
 
 function HomeCard() {

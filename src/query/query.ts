@@ -22,3 +22,22 @@ export const GET_USER_INFO = gql`
     }
   }
 `;
+
+// 대분류 - 모든 프로젝트 조회
+export const GET_ALL_PROJECTS = gql`
+  query GetAllProjects {
+    getAllProjects {
+      success
+      total
+      projects {
+        id
+        name
+        userId
+        totalTask
+        completeTask
+        endDate
+        startDate
+      }
+    }
+  }
+`;

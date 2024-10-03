@@ -6,10 +6,14 @@ import HomeCard from './HomeCard';
 import DefaultAlert from '../Common/DefaultAlert';
 import alertValue from '../../modules/alert';
 import { appUtils } from '../../utils/utils';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_PROJECTS } from '../../query/query';
+import { useEffect } from 'react';
 
 function Home() {
   // const navigate = useNavigate()
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
+  const { loading, error, data } = useQuery(GET_ALL_PROJECTS);
 
   // 다짐하기
   const handleMakeAPromise = () => {
@@ -19,6 +23,13 @@ function Home() {
       alert('준비중입니다');
     }
   };
+
+  useEffect(() => {
+    if (data && data.getAllProjects.success === true) console.log('대분류==', data);
+  }, [data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
@@ -43,16 +54,17 @@ function Home() {
               </div>
             </div>
           </div>
+          {/* 컨텐츠 */}
           <div
             className="px-20 pt-24 overflow-y-scroll"
             style={{
               height: 'calc(100% - 13.4375rem)',
             }}
           >
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
+            {/* <div className="text-center mt-6">
+              <div className="text-20 font-semi text-gr-700">진행 중인 프로젝트가 없습니다.</div>
+              <p className="mt-10 text-16 text-gr-600">+ 버튼을 눌러 새 프로젝트를 추가해보세요</p>
+            </div> */}
             <HomeCard />
           </div>
         </div>

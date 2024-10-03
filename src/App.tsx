@@ -4,6 +4,7 @@ import AuthCallback from './pages/Login/AuthCallback';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import MyPage from './pages/MyPage/MyPage';
+import Projects from './pages/Projects/Projects';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/kakao/callback" element={<AuthCallback />} />
       <Route path="/home" element={<Home />} />
       <Route path="/mypage" element={<MyPage />} />
+      <Route path="/projects" element={<Projects />} />
     </Routes>
   );
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as Avatar } from '/src/assets/images/avatar.svg';
+import { ReactComponent as Avatar } from '/src/assets/icons/avatar.svg';
 import { appUtils } from '../../utils/utils';
 import alertValue from '../../modules/alert';
 

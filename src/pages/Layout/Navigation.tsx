@@ -1,6 +1,6 @@
-import { ReactComponent as HomeSelected } from '/src/assets/images/navi_home_selected.svg';
-import { ReactComponent as CalendarUnselected } from '/src/assets/images/navi_calendar_unselected.svg';
-import { ReactComponent as Plus } from '/src/assets/images/navi_plus.svg';
+import { ReactComponent as HomeSelected } from '/src/assets/icons/navi_home_selected.svg';
+import { ReactComponent as CalendarUnselected } from '/src/assets/icons/navi_calendar_unselected.svg';
+import { ReactComponent as Plus } from '/src/assets/icons/navi_plus.svg';
 import { useNavigate } from 'react-router-dom';
 import alertValue from '../../modules/alert';
 import { appUtils } from '../../utils/utils';
