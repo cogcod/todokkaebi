@@ -7,6 +7,11 @@ import { ReactComponent as Dot } from '/src/assets/icons/dot.svg';
 function Projects() {
   const [isComplete, setIsComplete] = useState(false);
   const [activeTab, setActiveTab] = useState<number>(1); // 초기 탭을 숫자로 설정
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(e.target.checked);
+  };
 
   const handleTabClick = (tabIndex: number): void => {
     setActiveTab(tabIndex);
@@ -49,7 +54,7 @@ function Projects() {
           </div>
         </div>
         {/* 탭메뉴 */}
-        <div className="w-full h-[3rem] bg-white px-20 border-b border-gr-400">
+        <div className="flex justify-between items-center w-full h-[3rem] bg-white px-20 border-b border-gr-400">
           <div className="flex">
             <button
               className={`px-4 py-8 text-20 mr-12 ${
@@ -77,7 +82,17 @@ function Projects() {
             </button>
           </div>
           <div>
-            <div>인풋</div>
+            <div className="p-4">
+              <label className="flex items-center space-x-2">
+                <span className="text-gr-600 text-12 font-semi">날짜 표시</span>
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                  className="relative appearance-none form-checkbox h-18 w-18 border-[1.5px] rounded-2 border-gr-400 checked:bg-pm-500 checked:border-0 checked:bg-[url('../../assets/images/checked.png')] bg-no-repeat bg-center"
+                />
+              </label>
+            </div>
           </div>
         </div>
         {/* 컨텐츠 */}

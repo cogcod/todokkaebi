@@ -8,16 +8,14 @@ function Login() {
   const [getKakaoLoginUrl, { loading, error, data }] = useLazyQuery(GET_KAKAO_LOGIN_URL);
 
   const handleKakaoLogin = () => {
-    // if (data && data.getKakaoLoginUrl) {
-    //   window.location.href = data.getKakaoLoginUrl.url;
-    // }
     console.log(data);
-    const input = { test: true }; // 필요한 input 값 설정
+
+    const input = { test: true };
 
     getKakaoLoginUrl({ variables: { input } })
       .then(response => {
-        const kakaoLoginUrl = response.data.getKakaoLoginUrl.url; // URL 가져오기
-        window.location.href = kakaoLoginUrl; // URL로 리다이렉트
+        const kakaoLoginUrl = response.data.getKakaoLoginUrl.url;
+        window.location.href = kakaoLoginUrl;
       })
       .catch(err => {
         console.error('Error fetching Kakao login URL:', err);

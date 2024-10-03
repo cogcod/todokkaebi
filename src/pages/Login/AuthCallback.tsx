@@ -12,11 +12,10 @@ function AuthCallback() {
   useEffect(() => {
     const searchParam = new URLSearchParams(location.search);
     const code = searchParam.get('code');
-    console.log('@2232323', code);
+
     if (code) {
-      kakaoAuth({ variables: { input: { code: code } } })
+      kakaoAuth({ variables: { input: { code: code, test: true } } })
         .then(({ data }) => {
-          console.log('## data', data);
           JwtStorageService.setAccessToken(data.kakaoAuth.accessToken);
           JwtStorageService.setRefreshToken(data.kakaoAuth.refreshToken);
           setMessage('Authentication successful. Redirecting...');
