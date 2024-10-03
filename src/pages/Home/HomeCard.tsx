@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { appUtils, GaugeBar } from '../../utils/utils';
 import { ReactComponent as Alarm } from '/src/assets/images/card_alarm.svg';
 import alertValue from '../../modules/alert';
 
 function HomeCard() {
   const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    setIsComplete(false);
+  }, []);
 
   // 카드 상세
   const moveToDetail = () => {
