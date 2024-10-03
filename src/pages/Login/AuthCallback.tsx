@@ -12,9 +12,10 @@ function AuthCallback() {
   useEffect(() => {
     const searchParam = new URLSearchParams(location.search);
     const code = searchParam.get('code');
+    const kakaoTest = import.meta.env.VITE_KAKAO_TEST;
 
     if (code) {
-      kakaoAuth({ variables: { input: { code: code, test: true } } })
+      kakaoAuth({ variables: { input: { code: code, test: kakaoTest === 'true' } } })
         .then(({ data }) => {
           JwtStorageService.setAccessToken(data.kakaoAuth.accessToken);
           JwtStorageService.setRefreshToken(data.kakaoAuth.refreshToken);

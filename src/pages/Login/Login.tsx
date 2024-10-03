@@ -8,9 +8,10 @@ function Login() {
   const [getKakaoLoginUrl, { loading, error, data }] = useLazyQuery(GET_KAKAO_LOGIN_URL);
 
   const handleKakaoLogin = () => {
-    console.log(data);
+    const kakaoTest = import.meta.env.VITE_KAKAO_TEST;
+    const input = { test: kakaoTest === 'true' };
 
-    const input = { test: true };
+    console.log(data); // TODO: 삭제
 
     getKakaoLoginUrl({ variables: { input } })
       .then(response => {
