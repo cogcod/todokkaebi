@@ -6,14 +6,14 @@ import HomeCard from './HomeCard';
 import DefaultAlert from '../Common/DefaultAlert';
 import alertValue from '../../modules/alert';
 import { appUtils } from '../../utils/utils';
-// import { useQuery } from '@apollo/client';
-// import { GET_ALL_PROJECTS } from '../../query/query';
-// import { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_PROJECTS } from '../../query/query';
+import { useEffect } from 'react';
 
 function Home() {
   // const navigate = useNavigate()
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
-  // const { loading, error, data } = useQuery(GET_ALL_PROJECTS);
+  const { loading, error, data } = useQuery(GET_ALL_PROJECTS);
 
   // 다짐하기
   const handleMakeAPromise = () => {
@@ -24,12 +24,12 @@ function Home() {
     }
   };
 
-  // useEffect(() => {
-  //   if (data && data.getAllProjects.success === true) console.log('대분류==', data);
-  // }, [data]);
+  useEffect(() => {
+    if (data && data.getAllProjects.success === true) console.log('대분류==', data);
+  }, [data]);
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
