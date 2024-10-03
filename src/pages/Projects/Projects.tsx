@@ -84,6 +84,7 @@ function Projects() {
               완료
             </button>
           </div>
+          {/* Select box */}
           <div>
             <div className="p-4">
               <label className="flex items-center space-x-2">

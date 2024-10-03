@@ -34,6 +34,8 @@ export default {
       black: '#000000',
       'black-100': '#252729',
       red: '#EB003B',
+      'red-800': '#D50136',
+      'red-100': '#FEECF0',
     },
     fontFamily: {
       pretendard: ['Pretendard', 'sans-serif'],

@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { appUtils, GaugeBar } from '../../utils/utils';
 import { ReactComponent as Alarm } from '/src/assets/icons/card_alarm.svg';
 import alertValue from '../../modules/alert';
+import { useNavigate } from 'react-router-dom';
 
 function HomeCard() {
+  const navigate = useNavigate();
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function HomeCard() {
     if (!appUtils.isLoggedIn()) {
       alertValue(true);
     } else {
-      alert('준비중입니다');
+      navigate('/projects');
     }
   };
 
