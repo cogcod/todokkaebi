@@ -3,9 +3,9 @@ import { gql } from '@apollo/client';
 // ==[QUERY : GET]==
 
 // 카카오 로그인 - url 조회
-export const GET_KAKAO_AUTH_URL = gql`
-  query GetKakaoLoginUrl {
-    getKakaoLoginUrl {
+export const GET_KAKAO_LOGIN_URL = gql`
+  query GetKakaoLoginUrl($input: GetKakaoLoginUrlInput!) {
+    getKakaoLoginUrl(input: $input) {
       url
     }
   }

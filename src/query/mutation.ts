@@ -4,10 +4,10 @@ import { gql } from '@apollo/client';
 
 // 카카오 로그인 - 인증 후 토큰 발급
 export const COMPLETE_KAKAO_AUTHENTICATION = gql`
-  mutation KakaoAuth($code: String!) {
-    kakaoAuth(input: { code: $code }) {
-      accessToken
+  mutation KakaoAuth($input: KakaoAuthCodeInput!) {
+    kakaoAuth(input: $input) {
       refreshToken
+      accessToken
     }
   }
 `;
