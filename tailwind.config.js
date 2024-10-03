@@ -33,11 +33,13 @@ export default {
       white: '#ffffff',
       black: '#000000',
       'black-100': '#252729',
+      red: '#EB003B',
     },
     fontFamily: {
       pretendard: ['Pretendard', 'sans-serif'],
     },
     fontSize: {
+      10: '.625rem', // text-12
       12: '0.75rem', // text-12
       14: '0.875rem',
       16: '1rem',
@@ -69,9 +71,9 @@ export default {
         26: '1.625rem',
         28: '1.75rem',
         32: '2rem',
-        inner: 'calc(100% - 120px)', // h-inner : 헤더/네비 제외한 영역
       },
       borderRadius: {
+        2: '.125rem', // rounded-4
         4: '0.25rem', // rounded-4
         6: '0.375rem',
         8: '.5rem',

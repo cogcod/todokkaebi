@@ -37,6 +37,21 @@
 
 /* custom style */
 @layer components {
+  /* 헤더,네비 제외한 영역 */
+  .h-inner {
+    height: calc(100% - 120px);
+  }
+  /* 컨텐츠 영역 */
+  .inner-contents-home {
+    padding: 1.5rem 1.25rem 0;
+    overflow-y: scroll;
+    height: calc(100% - 13.4375rem);
+  }
+  .inner-contents-other {
+    padding: 1.5rem 1.25rem 0;
+    overflow-y: scroll;
+    height: calc(100% - 9.625rem);
+  }
   /* 풀 버튼 */
   .btn-full {
     width: 100%;

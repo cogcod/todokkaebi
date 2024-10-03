@@ -3,6 +3,9 @@ import { GaugeBar } from '../../utils/utils';
 import Header from '../Layout/Header';
 import Navigation from '../Layout/Navigation';
 import { ReactComponent as Dot } from '/src/assets/icons/dot.svg';
+import Plan from './Plan/Plan';
+import Progress from './Progress/Progress';
+import Complete from './Complete/Complete';
 
 function Projects() {
   const [isComplete, setIsComplete] = useState(false);
@@ -24,7 +27,7 @@ function Projects() {
   return (
     <>
       <Header />
-      <div className="h-full bg-gr-50">
+      <div className="h-inner bg-gr-50">
         {/* 대제목 + 게이지바 */}
         <div className="flex flex-col justify-between bg-white w-full">
           <div className="flex flex-col w-full h-[6.625rem] pt-24 px-20 pb-20 bg-white">
@@ -96,12 +99,10 @@ function Projects() {
           </div>
         </div>
         {/* 컨텐츠 */}
-        <div className="h-inner">
-          <div className="p-4">
-            {activeTab === 1 && <div>계획</div>}
-            {activeTab === 2 && <div>진행</div>}
-            {activeTab === 3 && <div>완료</div>}
-          </div>
+        <div className="inner-contents-other">
+          {activeTab === 1 && <Plan />}
+          {activeTab === 2 && <Progress />}
+          {activeTab === 3 && <Complete />}
         </div>
       </div>
       <Navigation />
