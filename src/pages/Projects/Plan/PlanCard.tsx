@@ -9,6 +9,7 @@ function PlanCard() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
+  // 수정/삭제 메뉴
   const openEditMenu = () => {
     setIsOpen(true);
   };
@@ -20,7 +21,7 @@ function PlanCard() {
   };
 
   useEffect(() => {
-    // menuRef.current(플로팅 메뉴) 있으면 닫기
+    // menuRef.current(플로팅 메뉴) 있으면 다른 곳 클릭 시 닫기
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);

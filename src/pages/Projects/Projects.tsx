@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GaugeBar } from '../../utils/utils';
 import Header from '../Layout/Header';
 import Navigation from '../Layout/Navigation';
@@ -6,11 +6,16 @@ import { ReactComponent as Dot } from '/src/assets/icons/dot.svg';
 import Plan from './Plan/Plan';
 import Progress from './Progress/Progress';
 import Complete from './Complete/Complete';
+import { ReactComponent as Edit } from '/src/assets/icons/float_edit.svg';
+import { ReactComponent as Remove } from '/src/assets/icons/float_remove.svg';
 
 function Projects() {
   const [isComplete, setIsComplete] = useState(false);
   const [activeTab, setActiveTab] = useState<number>(1); // 초기 탭을 숫자로 설정
   const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
@@ -20,16 +25,41 @@ function Projects() {
     setActiveTab(tabIndex);
   };
 
+  // 수정/삭제 메뉴
+  const openEditMenu = () => {
+    setIsOpen(true);
+  };
+  const moveToEditPage = () => {
+    alert('준비중입니다');
+  };
+  const removeThisCard = () => {
+    alert('준비중입니다');
+  };
+
   useEffect(() => {
-    setIsComplete(true);
-  }, []);
+    setIsComplete(true); //TODO: 삭제
+
+    // menuRef.current(플로팅 메뉴) 있으면 다른 곳 클릭 시 닫기
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // 이벤트 리스너 제거
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuRef]);
 
   return (
     <>
       <Header />
       <div className="h-inner bg-gr-50">
         {/* 대제목 + 게이지바 */}
-        <div className="flex flex-col justify-between bg-white w-full">
+        <div className="relative flex flex-col justify-between bg-white w-full">
           <div className="flex flex-col w-full h-[6.625rem] pt-24 px-20 pb-20 bg-white">
             <div className="flex justify-between items-center">
               <div className="w-[42px] h-[42px] bg-gr-400"></div>
@@ -38,7 +68,9 @@ function Projects() {
                   <div className="truncate w-[12.75rem] text-18 font-semi">
                     지구 정복하기 위해 근육 키우기 지구 정복하기 위해 근육 키우기
                   </div>
-                  <Dot />
+                  <div onClick={openEditMenu}>
+                    <Dot />
+                  </div>
                 </div>
                 <div className="flex-center">
                   <GaugeBar value={75} max={100} />
@@ -55,6 +87,24 @@ function Projects() {
               </div>
             </div>
           </div>
+          {/* 플로팅 메뉴 */}
+          {isOpen && (
+            <div
+              ref={menuRef}
+              className="absolute right-[20px] top-[29px] w-[176px] h-[104px] bg-white rounded-8 shadow-lg z-20"
+            >
+              <ul className="p-8">
+                <li onClick={moveToEditPage} className="flex-center justify-between pl-20 py-8 pr-8 mb-8">
+                  <p className="text-gr-700 text-16">수정</p>
+                  <Edit />
+                </li>
+                <li onClick={removeThisCard} className="flex-center justify-between pl-20 py-8 pr-8">
+                  <p className="text-red text-16">삭제</p>
+                  <Remove />
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
         {/* 탭메뉴 */}
         <div className="flex justify-between items-center w-full h-[3rem] bg-white px-20 border-b border-gr-400">

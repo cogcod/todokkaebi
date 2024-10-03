@@ -28,7 +28,7 @@ function HomeCard() {
     >
       <div className="flex justify-between">
         <div className="w-[42px] h-[42px] bg-gr-400"></div>
-        <div className="flex flex-col">
+        <div className="flex flex-col pl-12">
           <div className="flex justify-between items-center mb-8">
             <div className="truncate w-[12.75rem] text-18 font-semi">
               지구 정복하기 위해 근육 키우기 지구 정복하기 위해 근육 키우기

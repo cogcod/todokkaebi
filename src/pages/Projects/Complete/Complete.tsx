@@ -8,6 +8,9 @@ function Complete() {
         <p className="mt-10 text-16 text-gr-600">+ 버튼을 눌러 새 프로젝트를 추가해보세요</p>
       </div> */}
       <CompleteCard />
+      <CompleteCard />
+      <CompleteCard />
+      <CompleteCard />
     </div>
   );
 }

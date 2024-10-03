@@ -44,12 +44,13 @@
   /* 컨텐츠 영역 */
   .inner-contents-home {
     padding: 1.5rem 1.25rem 0;
-    overflow-y: scroll;
-    height: calc(100% - 13.4375rem);
+    overflow-y: auto;
+    flex-grow: 1;
+    height: calc(100% - 13.375rem);
   }
   .inner-contents-other {
     padding: 1.5rem 1.25rem 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: calc(100% - 9.625rem);
   }
   /* 풀 버튼 */
