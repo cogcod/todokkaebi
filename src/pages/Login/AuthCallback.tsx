@@ -14,6 +14,8 @@ function AuthCallback() {
     const code = searchParam.get('code');
     const kakaoTest = import.meta.env.VITE_KAKAO_TEST;
 
+    console.log('환경변수!!!', import.meta.env.VITE_KAKAO_TEST);
+
     if (code) {
       kakaoAuth({ variables: { input: { code: code, test: kakaoTest === 'true' } } })
         .then(({ data }) => {
