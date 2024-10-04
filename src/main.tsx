@@ -20,10 +20,26 @@ const authLink = setContext((_, { headers }) => {
 
 // link-error level 핸들링
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  // TODO : 토큰 만료 시 자동 갱신
   if (graphQLErrors) {
-    graphQLErrors.forEach(({ message, locations, path }) => {
+    graphQLErrors.forEach(async ({ message, locations, path }) => {
       console.log(`[GraphQL error] Message: ${message}, Location: ${locations}, Path: ${path}`);
+      // 토큰 만료시 자동 갱신
+      if (message.includes('Unauthorized')) {
+        // ====>
+        // const newAccessToken = await refreshAccessToken();
+        // if (newAccessToken) {
+        //   JwtStorageService.setAccessToken(newAccessToken);
+        //   // 새로운 accessToken이 발급되면, 동일한 요청을 다시 시도
+        //   operation.setContext(({ headers }) => ({
+        //     headers: {
+        //       ...headers,
+        //       authorization: `Bearer ${newAccessToken}`,
+        //     },
+        //   }));
+        //   return forward(operation);
+        //   // client.resetStore(); // 캐시를 초기화
+        // }
+      }
     });
   }
   if (networkError) {

@@ -5,6 +5,9 @@ export const JwtStorageService = {
   setAccessToken: (token: string): void => {
     localStorage.setItem('accessToken', token);
   },
+  getRefreshToken: () => {
+    return localStorage.getItem('refreshToken');
+  },
   setRefreshToken: (token: string): void => {
     localStorage.setItem('refreshToken', token);
   },
