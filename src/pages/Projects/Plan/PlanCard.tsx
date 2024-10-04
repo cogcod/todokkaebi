@@ -4,8 +4,9 @@ import { ReactComponent as Dot } from '/src/assets/icons/dot.svg';
 import { ReactComponent as PinFilled } from '/src/assets/icons/pin_filled.svg';
 import { ReactComponent as Edit } from '/src/assets/icons/float_edit.svg';
 import { ReactComponent as Remove } from '/src/assets/icons/float_remove.svg';
+import { Categories } from '../../../utils/interface';
 
-function PlanCard() {
+function PlanCard({ data }: { data: Categories }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,15 +42,19 @@ function PlanCard() {
       <div className="flex justify-between mb-4 py-8 border-b border-gr-200">
         <div className="flex-center">
           <PinFilled />
-          <div className="ml-1 text-gr-800 text-15">노래 잘부르기</div>
+          <div className="ml-1 text-gr-800 text-15">{data?.name}</div>
         </div>
         <div onClick={openEditMenu}>
           <Dot />
         </div>
       </div>
-      <PlanCardList />
-      <PlanCardList />
-      <PlanCardList />
+      {data && data.tasks ? (
+        data.tasks.map((data, idx: number) => {
+          return <PlanCardList key={idx} data={data} />;
+        })
+      ) : (
+        <></>
+      )}
       {/* 플로팅 메뉴 */}
       {isOpen && (
         <div

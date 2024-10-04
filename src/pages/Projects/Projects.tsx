@@ -49,7 +49,6 @@ function Projects() {
       .then(response => {
         if (response.data && response.data.getProject.project) {
           setProjectDetail(response.data.getProject.project); // 대분류 상세
-          console.log(response.data.getProject);
           if (projectDetail?.completeTask === 100) {
             setIsComplete(true);
           }
