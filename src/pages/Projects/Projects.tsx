@@ -12,6 +12,7 @@ import projectIdValue from '../../modules/projectId';
 import { useLazyQuery, useReactiveVar } from '@apollo/client';
 import { GET_PROJECT_DETAIL } from '../../query/query';
 import { ProjectDetail } from '../../utils/interface';
+import CategoryAlert from '../Common/CategoryAlert';
 
 function Projects() {
   const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
@@ -181,6 +182,7 @@ function Projects() {
         </div>
       </div>
       <Navigation />
+      <CategoryAlert />
     </>
   );
 }

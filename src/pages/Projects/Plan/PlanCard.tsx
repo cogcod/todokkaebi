@@ -5,10 +5,13 @@ import { ReactComponent as PinFilled } from '/src/assets/icons/pin_filled.svg';
 import { ReactComponent as Edit } from '/src/assets/icons/float_edit.svg';
 import { ReactComponent as Remove } from '/src/assets/icons/float_remove.svg';
 import { Categories } from '../../../utils/interface';
+import category_alert from '../../../modules/category_alert';
+import { useReactiveVar } from '@apollo/client';
 
 function PlanCard({ data }: { data: Categories }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const alertState = useReactiveVar(category_alert);
 
   // 수정/삭제 메뉴
   const openEditMenu = () => {
@@ -18,7 +21,14 @@ function PlanCard({ data }: { data: Categories }) {
     alert('준비중입니다');
   };
   const removeThisCard = () => {
-    alert('준비중입니다');
+    category_alert({
+      ...alertState,
+      isOpen: true,
+      title: '목표 삭제',
+      content: `${data.name}\n
+      목표를 삭제하시겠어요?`,
+      categoryId: `${data.id}`,
+    });
   };
 
   useEffect(() => {

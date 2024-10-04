@@ -1,5 +1,5 @@
 import { makeVar } from '@apollo/client';
 
-const alertValue = makeVar(false);
+const alert = makeVar(false);
 
-export default alertValue;
+export default alert;

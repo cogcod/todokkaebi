@@ -15,6 +15,7 @@ function Progress() {
       .then(response => {
         if (response.data && response.data.getProject.project) {
           setProgress(response.data.getProject.project.categories);
+          // console.log('프로젝트 id', response.data.getProject.project.id);
         }
       })
       .catch(err => {

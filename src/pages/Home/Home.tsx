@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 
 function Home() {
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
-  const { loading, error, data } = useQuery(GET_ALL_PROJECTS);
+  const { loading, error, data } = useQuery(GET_ALL_PROJECTS, { skip: !appUtils.isLoggedIn() });
   const [projectsData, setProjectsData] = useState([]);
 
   // 다짐하기

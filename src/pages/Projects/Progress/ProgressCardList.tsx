@@ -8,6 +8,8 @@ function ProgressCardList({ data }: { data: Tasks }) {
     setIsChecked(!isChecked);
   };
 
+  // console.log('task id', data.id);
+
   return (
     <div className="flex-center justify-between pl-8 py-12">
       <div className="flex flex-col">

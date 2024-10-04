@@ -4,11 +4,13 @@ import PlanCard from './PlanCard';
 import { useEffect, useState } from 'react';
 import projectIdValue from '../../../modules/projectId';
 import { TASK_STATE } from '../../../common/enums/task-state.enum';
+import refresh from '../../../modules/refresh';
 
 function Plan() {
   const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
   const selecetedCardId = useReactiveVar(projectIdValue);
   const [plans, setPlans] = useState([]);
+  const refreshState = useReactiveVar(refresh);
 
   useEffect(() => {
     getProjects({ variables: { input: { id: selecetedCardId, state: TASK_STATE.PENDING } } })
@@ -16,11 +18,12 @@ function Plan() {
         if (response.data && response.data.getProject.project) {
           setPlans(response.data.getProject.project.categories);
         }
+        refresh(false);
       })
       .catch(err => {
         console.error('err', err);
       });
-  }, []);
+  }, [refreshState]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
