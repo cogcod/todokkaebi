@@ -42,3 +42,12 @@ export const DELETE_USER = gql`
     }
   }
 `;
+
+// AccessToken 재발급
+export const REISSUE_ACCESSTOKEN = gql`
+  mutation ReissueAccessToken($input: ReissueAccessTokenInput!) {
+    reissueAccessToken(input: $input) {
+      accessToken
+    }
+  }
+`;

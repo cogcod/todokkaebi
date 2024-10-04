@@ -25,12 +25,6 @@ function Login() {
   };
   const moveToHome = () => {
     navigate('/home');
-    // JwtStorageService.setAccessToken(
-    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMTY5MjVhMy0zYTQwLTQ2YzAtOWY4MS1iYWI2YWRmNDJkYTEiLCJ0eXBlIjoiQUNDRVNTIiwiaWF0IjoxNzI3OTYzMDg4LCJleHAiOjE3Mjc5NjQ4ODh9.ZHARxlfK6TODcO0RUzp5mvXDdcQazPlbkROgWDX1Fe0',
-    // );
-    // JwtStorageService.setRefreshToken(
-    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMTY5MjVhMy0zYTQwLTQ2YzAtOWY4MS1iYWI2YWRmNDJkYTEiLCJ0eXBlIjoiUkVGUkVTSCIsImlhdCI6MTcyNzk2MzA4OCwiZXhwIjoxNzI4MjIyMjg4fQ.L0-uXJqVYkWgRNTej0aIKlpEedJGZpalQDZxTOAmsVU',
-    // );
   };
 
   if (loading) return <p>Loading...</p>;

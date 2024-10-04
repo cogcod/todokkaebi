@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { JwtStorageService } from './services/auth/jwt-storage.service.ts';
+// import useReissueAccessToken from './utils/useReissueAccessToken.tsx';
 
 // api 통신 시 header 설정 추가
 const authLink = setContext((_, { headers }) => {
@@ -24,22 +25,23 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     graphQLErrors.forEach(async ({ message, locations, path }) => {
       console.log(`[GraphQL error] Message: ${message}, Location: ${locations}, Path: ${path}`);
       // 토큰 만료시 자동 갱신
-      if (message.includes('Unauthorized')) {
-        // ====>
-        // const newAccessToken = await refreshAccessToken();
-        // if (newAccessToken) {
-        //   JwtStorageService.setAccessToken(newAccessToken);
-        //   // 새로운 accessToken이 발급되면, 동일한 요청을 다시 시도
-        //   operation.setContext(({ headers }) => ({
-        //     headers: {
-        //       ...headers,
-        //       authorization: `Bearer ${newAccessToken}`,
-        //     },
-        //   }));
-        //   return forward(operation);
-        //   // client.resetStore(); // 캐시를 초기화
-        // }
-      }
+      // if (message.includes('인증되지 않은 접근입니다')) {
+      //   try {
+      //     const newAccessToken = await useReissueAccessToken(); // 토큰 재발급
+      //     console.log('newAccessToken', newAccessToken);
+      //     // if (newAccessToken) {
+      //     //   operation.setContext(({ headers = {} }) => ({
+      //     //     headers: {
+      //     //       ...headers,
+      //     //       authorization: `Bearer ${newAccessToken}`, // 새로운 accessToken으로 헤더 업데이트
+      //     //     },
+      //     //   }));
+      //     //   return forward(operation); // 동일한 요청 다시 시도
+      //     // }
+      //   } catch (err) {
+      //     console.error('Failed to reissue access token:', err);
+      //   }
+      // }
     });
   }
   if (networkError) {

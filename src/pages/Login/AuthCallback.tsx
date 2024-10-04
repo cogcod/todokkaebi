@@ -14,13 +14,20 @@ function AuthCallback() {
     const code = searchParam.get('code');
     const kakaoTest = import.meta.env.VITE_KAKAO_TEST;
 
-    console.log('환경변수!!!', import.meta.env.VITE_KAKAO_TEST);
-
     if (code) {
       kakaoAuth({ variables: { input: { code: code, test: kakaoTest === 'true' } } })
         .then(({ data }) => {
           JwtStorageService.setAccessToken(data.kakaoAuth.accessToken);
           JwtStorageService.setRefreshToken(data.kakaoAuth.refreshToken);
+
+          // JwtStorageService.setAccessToken(
+          //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMTY5MjVhMy0zYTQwLTQ2YzAtOWY4MS1iYWI2YWRmNDJkYTEiLCJ0eXBlIjoiQUNDRVNTIiwiaWF0IjoxNzI3OTYzMDg4LCJleHAiOjE3Mjc5NjQ4ODh9.ZHARxlfK6TODcO0RUzp5mvXDdcQazPlbkROgWDX1Fe0',
+          // );
+          // JwtStorageService.setRefreshToken(
+          //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMTY5MjVhMy0zYTQwLTQ2YzAtOWY4MS1iYWI2YWRmNDJkYTEiLCJ0eXBlIjoiUkVGUkVTSCIsImlhdCI6MTcyNzk2MzA4OCwiZXhwIjoxNzI4MjIyMjg4fQ.L0-uXJqVYkWgRNTej0aIKlpEedJGZpalQDZxTOAmsVU',
+          // );
+
+          console.log('token', data);
           setMessage('Authentication successful. Redirecting...');
           setTimeout(() => {
             window.location.href = '/home';
