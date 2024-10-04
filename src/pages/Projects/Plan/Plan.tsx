@@ -8,14 +8,13 @@ import { TASK_STATE } from '../../../common/enums/task-state.enum';
 function Plan() {
   const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
   const selecetedCardId = useReactiveVar(projectIdValue);
-  const [categories, setCategories] = useState([]);
+  const [plans, setPlans] = useState([]);
 
   useEffect(() => {
     getProjects({ variables: { input: { id: selecetedCardId, state: TASK_STATE.PENDING } } })
       .then(response => {
         if (response.data && response.data.getProject.project) {
-          setCategories(response.data.getProject.project.categories);
-          console.log('1', response.data.getProject.project.categories);
+          setPlans(response.data.getProject.project.categories);
         }
       })
       .catch(err => {
@@ -28,8 +27,8 @@ function Plan() {
 
   return (
     <div>
-      {categories ? (
-        categories.map((data, idx: number) => {
+      {plans.length !== 0 ? (
+        plans.map((data, idx: number) => {
           return <PlanCard key={idx} data={data} />;
         })
       ) : (

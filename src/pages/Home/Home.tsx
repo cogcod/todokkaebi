@@ -55,7 +55,7 @@ function Home() {
           </div>
           {/* 컨텐츠 */}
           <div className="inner-contents-home">
-            {data && projectsData ? (
+            {projectsData.length !== 0 ? (
               projectsData.map((data, idx: number) => {
                 return <HomeCard key={idx} data={data} />;
               })

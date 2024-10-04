@@ -4,8 +4,9 @@ import { ReactComponent as PinFilled } from '/src/assets/icons/pin_filled.svg';
 import { ReactComponent as Edit } from '/src/assets/icons/float_edit.svg';
 import { ReactComponent as Remove } from '/src/assets/icons/float_remove.svg';
 import ProgressCardList from './ProgressCardList';
+import { Categories } from '../../../utils/interface';
 
-function ProgressCard() {
+function ProgressCard({ data }: { data: Categories }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -44,7 +45,7 @@ function ProgressCard() {
     <div className="relative bg-white rounded-12 pt-16 px-20 pb-20 mb-20">
       <div className="flex flex-col mb-4 border-b border-gr-200">
         <div className="flex-center justify-between mb-8">
-          <div className="flex-center text-pm-600 text-10 w-[48px] h-[20px] bg-pm-400 rounded-4">33%</div>
+          <div className="flex-center text-pm-600 text-10 w-[48px] h-[20px] bg-pm-400 rounded-4">0%</div>
           <div onClick={openEditMenu}>
             <Dot />
           </div>
@@ -52,7 +53,7 @@ function ProgressCard() {
         <div className="flex-center justify-between py-8">
           <div className="flex">
             <PinFilled />
-            <div className="ml-1 text-gr-800 text-15">노래 잘부르기</div>
+            <div className="ml-1 text-gr-800 text-15">{data?.name}</div>
           </div>
           {/* Select box */}
           <div>
@@ -70,9 +71,13 @@ function ProgressCard() {
           </div>
         </div>
       </div>
-      <ProgressCardList />
-      <ProgressCardList />
-      <ProgressCardList />
+      {data && data.tasks ? (
+        data.tasks.map((data, idx: number) => {
+          return <ProgressCardList key={idx} data={data} />;
+        })
+      ) : (
+        <></>
+      )}
       {/* 플로팅 메뉴 */}
       {isOpen && (
         <div

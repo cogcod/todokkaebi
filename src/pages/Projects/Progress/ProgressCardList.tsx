@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Tasks } from '../../../utils/interface';
 
-function ProgressCardList() {
+function ProgressCardList({ data }: { data: Tasks }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -10,7 +11,7 @@ function ProgressCardList() {
   return (
     <div className="flex-center justify-between pl-8 py-12">
       <div className="flex flex-col">
-        <div className={`text-12 ${isChecked ? 'line-through text-gr-500' : 'text-gr-700'}`}>노래방에서 100점 맞기</div>
+        <div className={`text-12 ${isChecked ? 'line-through text-gr-500' : 'text-gr-700'}`}>{data?.title}</div>
         {/* <div className="text-gr-500 text-10">2024.10.01 ~ 2024.10.10</div> */}
       </div>
       <div className="flex-center">
