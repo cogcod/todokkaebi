@@ -1,4 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import Header from '../Layout/Header';
 import Navigation from '../Layout/Navigation';
@@ -8,12 +7,12 @@ import alertValue from '../../modules/alert';
 import { appUtils } from '../../utils/utils';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../../query/query';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function Home() {
-  // const navigate = useNavigate()
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
   const { loading, error, data } = useQuery(GET_ALL_PROJECTS);
+  const [projectsData, setProjectsData] = useState([]);
 
   // 다짐하기
   const handleMakeAPromise = () => {
@@ -25,7 +24,7 @@ function Home() {
   };
 
   useEffect(() => {
-    if (data && data.getAllProjects.success === true) console.log('대분류==', data);
+    if (data && data.getAllProjects.success === true) setProjectsData(data?.getAllProjects.projects);
   }, [data]);
 
   if (loading) return <p>Loading...</p>;
@@ -60,11 +59,9 @@ function Home() {
               <div className="text-20 font-semi text-gr-700">진행 중인 프로젝트가 없습니다.</div>
               <p className="mt-10 text-16 text-gr-600">+ 버튼을 눌러 새 프로젝트를 추가해보세요</p>
             </div> */}
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
+            {projectsData.map((data, idx: number) => {
+              return <HomeCard key={idx} data={data} />;
+            })}
           </div>
         </div>
         <Navigation />

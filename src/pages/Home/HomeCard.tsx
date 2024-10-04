@@ -3,8 +3,9 @@ import { appUtils, GaugeBar } from '../../utils/utils';
 import { ReactComponent as Alarm } from '/src/assets/icons/card_alarm.svg';
 import alertValue from '../../modules/alert';
 import { useNavigate } from 'react-router-dom';
+import { Projects } from '../../utils/interface';
 
-function HomeCard() {
+function HomeCard({ data }: { data: Projects }) {
   const navigate = useNavigate();
   const [isComplete, setIsComplete] = useState(false);
 
@@ -30,21 +31,21 @@ function HomeCard() {
         <div className="w-[42px] h-[42px] bg-gr-400"></div>
         <div className="flex flex-col pl-12">
           <div className="flex justify-between items-center mb-8">
-            <div className="truncate w-[12.75rem] text-18 font-semi">
-              지구 정복하기 위해 근육 키우기 지구 정복하기 위해 근육 키우기
-            </div>
+            <div className="truncate w-[12.75rem] text-18 font-semi">{data.name}</div>
             <div>
               {isComplete ? (
                 <div className="flex-center w-[3rem] h-20 ml-12 text-12 font-semi text-pm-600 bg-pm-400 rounded-4">
                   완료
                 </div>
               ) : (
-                <div className="flex-center w-[3rem] h-20 ml-12 text-pm-550 text-14 font-semi">77%</div>
+                <div className="flex-center w-[3rem] h-20 ml-12 text-pm-550 text-14 font-semi">
+                  {data.completeTask}%
+                </div>
               )}
             </div>
           </div>
           <div>
-            <GaugeBar value={75} max={100} />
+            <GaugeBar value={data.completeTask} max={100} />
           </div>
         </div>
       </div>
@@ -52,7 +53,14 @@ function HomeCard() {
         <div>
           <Alarm />
         </div>
-        <div className="ml-4 text-gr-600 text-12 font-regular">2020.20.09 ~ 2020.20.99</div>
+        {data.startDate && data.endDate ? (
+          <div className="ml-4 text-gr-600 text-12 font-regular">
+            {appUtils.convertUTCDateToString(data.startDate)}&nbsp;~&nbsp;
+            {appUtils.convertUTCDateToString(data.endDate)}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

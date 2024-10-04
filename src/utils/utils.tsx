@@ -24,4 +24,25 @@ export const appUtils = {
     const token = JwtStorageService.getToken();
     return !!token;
   },
+  /**
+   * UTC 날짜 형식 변환
+   * @param utcDateString
+   * @returns 2020.04.02
+   */
+  convertUTCDateToString: (utcDateString: string): string => {
+    const date = Date.parse(utcDateString);
+
+    if (isNaN(date)) {
+      throw new Error('Invalid date format');
+    }
+
+    // Date.parse()가 반환하는 number를 Date 객체로 변환
+    const formattedDate = new Date(date);
+
+    const year = formattedDate.getUTCFullYear();
+    const month = String(formattedDate.getUTCMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
+    const day = String(formattedDate.getUTCDate()).padStart(2, '0');
+
+    return `${year}.${month}.${day}`;
+  },
 };
