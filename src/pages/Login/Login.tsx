@@ -6,13 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
-  const [getKakaoLoginUrl, { loading, error, data }] = useLazyQuery(GET_KAKAO_LOGIN_URL);
+  const [getKakaoLoginUrl, { loading, error }] = useLazyQuery(GET_KAKAO_LOGIN_URL);
 
   const handleKakaoLogin = () => {
     const kakaoTest = import.meta.env.VITE_KAKAO_TEST;
     const input = { test: kakaoTest === 'true' };
-
-    console.log(data); // TODO: 삭제
 
     getKakaoLoginUrl({ variables: { input } })
       .then(response => {

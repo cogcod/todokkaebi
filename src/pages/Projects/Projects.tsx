@@ -8,14 +8,22 @@ import Progress from './Progress/Progress';
 import Complete from './Complete/Complete';
 import { ReactComponent as Edit } from '/src/assets/icons/float_edit.svg';
 import { ReactComponent as Remove } from '/src/assets/icons/float_remove.svg';
+import projectIdValue from '../../modules/projectId';
+import { useLazyQuery, useReactiveVar } from '@apollo/client';
+import { GET_PROJECT_DETAIL } from '../../query/query';
+import { ProjectDetail } from '../../utils/interface';
 
 function Projects() {
-  const [isComplete, setIsComplete] = useState(false);
+  const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
+  const [isComplete, setIsComplete] = useState(false); // 대메뉴 완료 상태
   const [activeTab, setActiveTab] = useState<number>(1); // 초기 탭을 숫자로 설정
   const [isChecked, setIsChecked] = useState<boolean>(false);
-
   const [isOpen, setIsOpen] = useState(false);
+
+  const [projectDetail, setProjectDetail] = useState<ProjectDetail | null>(null); // 대분류 상세
+
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const selecetedCardId = useReactiveVar(projectIdValue);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
@@ -37,8 +45,22 @@ function Projects() {
   };
 
   useEffect(() => {
-    setIsComplete(true); //TODO: 삭제
+    getProjects({ variables: { input: { id: selecetedCardId } } })
+      .then(response => {
+        if (response.data && response.data.getProject.project) {
+          setProjectDetail(response.data.getProject.project); // 대분류 상세
+          console.log(response.data.getProject);
+          if (projectDetail?.completeTask === 100) {
+            setIsComplete(true);
+          }
+        }
+      })
+      .catch(err => {
+        console.error('err', err);
+      });
+  }, []);
 
+  useEffect(() => {
     // menuRef.current(플로팅 메뉴) 있으면 다른 곳 클릭 시 닫기
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -54,6 +76,9 @@ function Projects() {
     };
   }, [menuRef]);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <>
       <Header />
@@ -65,22 +90,22 @@ function Projects() {
               <div className="w-[42px] h-[42px] bg-gr-400"></div>
               <div className="flex flex-col w-[18.125rem]">
                 <div className="flex justify-between items-center mb-8">
-                  <div className="truncate w-[12.75rem] text-18 font-semi">
-                    지구 정복하기 위해 근육 키우기 지구 정복하기 위해 근육 키우기
-                  </div>
+                  <div className="truncate w-[12.75rem] text-18 font-semi">{projectDetail?.name} </div>
                   <div onClick={openEditMenu}>
                     <Dot />
                   </div>
                 </div>
                 <div className="flex-center">
-                  <GaugeBar value={75} max={100} />
+                  <GaugeBar value={projectDetail?.completeTask ? projectDetail.completeTask : 0} max={100} />
                   <div>
                     {isComplete ? (
                       <div className="flex-center w-[3rem] h-20 ml-12 text-12 font-semi text-pm-600 bg-pm-400 rounded-4">
                         완료
                       </div>
                     ) : (
-                      <div className="flex-center w-[3rem] h-20 ml-12 text-pm-550 text-14 font-semi">77%</div>
+                      <div className="flex-center w-[3rem] h-20 ml-12 text-pm-550 text-14 font-semi">
+                        {projectDetail?.completeTask}%
+                      </div>
                     )}
                   </div>
                 </div>

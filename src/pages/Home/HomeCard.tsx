@@ -4,6 +4,7 @@ import { ReactComponent as Alarm } from '/src/assets/icons/card_alarm.svg';
 import alertValue from '../../modules/alert';
 import { useNavigate } from 'react-router-dom';
 import { Projects } from '../../utils/interface';
+import projectIdValue from '../../modules/projectId';
 
 function HomeCard({ data }: { data: Projects }) {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function HomeCard({ data }: { data: Projects }) {
     if (!appUtils.isLoggedIn()) {
       alertValue(true);
     } else {
+      projectIdValue(data.id);
       navigate('/projects');
     }
   };

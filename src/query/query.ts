@@ -41,3 +41,41 @@ export const GET_ALL_PROJECTS = gql`
     }
   }
 `;
+
+// 대분류 - 특정 프로젝트 조회
+export const GET_PROJECT_DETAIL = gql`
+  query GetProject($input: GetProjectInput!) {
+    getProject(input: $input) {
+      success
+      project {
+        id
+        name
+        userId
+        totalTask
+        completeTask
+        endDate
+        startDate
+        categories {
+          id
+          name
+          projectId
+          actualEndDate
+          actualStartDate
+          startedAt
+          endedAt
+          tasks {
+            id
+            actualStartDate
+            actualEndDate
+            startDate
+            endDate
+            title
+            check
+            status
+            categoryId
+          }
+        }
+      }
+    }
+  }
+`;
