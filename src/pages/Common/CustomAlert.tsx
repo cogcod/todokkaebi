@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useMutation, useReactiveVar } from '@apollo/client';
 import { DELETE_CATEGORY, DELETE_PROJECT } from '../../query/mutation';
 import custom_alert from '../../modules/custom_alert';
-import refresh from '../../modules/refresh';
 import { useNavigate } from 'react-router-dom';
+import refresh_plan from '../../modules/refresh_plan';
 
 function CustomAlert() {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ function CustomAlert() {
     deleteCategory({ variables: { input: { categoryId: AlertValue.categoryId } } })
       .then(result => {
         console.log('deleteCategory', result);
-        refresh(true); // 화면 새로고침
+        refresh_plan(true); // 화면 새로고침
       })
       .catch(error => {
         console.error(error);

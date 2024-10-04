@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Tasks } from '../../../utils/interface';
+import { appUtils } from '../../../utils/utils';
+import show_date from '../../../modules/show_date';
 
 function ProgressCardList({ data }: { data: Tasks }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -8,13 +10,18 @@ function ProgressCardList({ data }: { data: Tasks }) {
     setIsChecked(!isChecked);
   };
 
-  // console.log('task id', data.id);
-
   return (
     <div className="flex-center justify-between pl-8 py-12">
       <div className="flex flex-col">
         <div className={`text-12 ${isChecked ? 'line-through text-gr-500' : 'text-gr-700'}`}>{data?.title}</div>
-        {/* <div className="text-gr-500 text-10">2024.10.01 ~ 2024.10.10</div> */}
+        {show_date() ? (
+          <div className="text-gr-500 text-10">
+            {appUtils.convertUTCDateToString(data.startDate)}&nbsp;~&nbsp;
+            {appUtils.convertUTCDateToString(data.endDate)}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="flex-center">
         {/* <div className="flex-center text-gr-700 text-12 w-[44px] h-[20px] bg-gr-50 rounded-2">D-7</div> */}

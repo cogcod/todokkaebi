@@ -15,6 +15,7 @@ import { ProjectDetail } from '../../utils/interface';
 
 import custom_alert from '../../modules/custom_alert';
 import CustomAlert from '../Common/CustomAlert';
+import show_date from '../../modules/show_date';
 
 function Projects() {
   const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
@@ -29,10 +30,13 @@ function Projects() {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const selecetedCardId = useReactiveVar(projectIdValue);
 
+  // 날짜 표시 체크
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
+    show_date(!isChecked);
   };
 
+  // 탭 메뉴 클릭
   const handleTabClick = (tabIndex: number): void => {
     setActiveTab(tabIndex);
   };

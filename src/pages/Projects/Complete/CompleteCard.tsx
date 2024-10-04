@@ -1,4 +1,6 @@
+import show_date from '../../../modules/show_date';
 import { Categories } from '../../../utils/interface';
+import { appUtils } from '../../../utils/utils';
 import CompleteCardList from './CompleteCardList';
 import { ReactComponent as PinFilled } from '/src/assets/icons/pin_filled.svg';
 
@@ -11,7 +13,14 @@ function CompleteCard({ data }: { data: Categories }) {
           <div className="ml-1 text-gr-800 text-15">{data?.name}</div>
         </div>
         <div className="flex-center">
-          <div className="text-gr-600 text-12 mr-8">2024.10.01 / 2024.10.10</div>
+          {show_date() ? (
+            <div className="text-gr-600 text-12 mr-8">
+              {appUtils.convertUTCDateToString(data.endedAt)}&nbsp;/&nbsp;
+              {appUtils.convertUTCDateToString(data.actualEndDate)}
+            </div>
+          ) : (
+            <></>
+          )}
           {/* <div className="flex-center text-gr-700 text-12 w-[44px] h-[20px] bg-gr-50 rounded-2">D-7</div> */}
           <div className="flex-center text-red-800 text-12 w-[44px] h-[20px] bg-red-100 rounded-2">D+3</div>
         </div>
