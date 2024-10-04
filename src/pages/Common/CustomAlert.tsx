@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useMutation, useReactiveVar } from '@apollo/client';
-import { DELETE_CATEGORY } from '../../query/mutation';
+import { DELETE_CATEGORY, DELETE_PROJECT } from '../../query/mutation';
+import custom_alert from '../../modules/custom_alert';
 import refresh from '../../modules/refresh';
-import category_alert from '../../modules/category_alert';
+import { useNavigate } from 'react-router-dom';
 
-function CategoryAlert() {
-  const [deleteCategory, { loading, error }] = useMutation(DELETE_CATEGORY);
+function CustomAlert() {
+  const navigate = useNavigate();
+  const [deleteCategory, { loading: loadingCategory, error: errorCategory }] = useMutation(DELETE_CATEGORY);
+  const [deleteProject, { loading: loadingProject, error: errorProject }] = useMutation(DELETE_PROJECT);
   const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
-  const AlertValue = useReactiveVar(category_alert);
+  const AlertValue = useReactiveVar(custom_alert);
 
+  // Alert 닫기
   const closeAlert = () => {
     setIsAlertOpen(false);
-    category_alert({
+    custom_alert({
       ...AlertValue,
       isOpen: false,
       title: '',
@@ -19,9 +23,11 @@ function CategoryAlert() {
       categoryId: '',
     });
   };
-  const handleRemoveClick = () => {
+
+  // 중분류(카테고리) 삭제
+  const removeThisCategory = () => {
     // 상태변수 초기화
-    category_alert({
+    custom_alert({
       ...AlertValue,
       isOpen: false,
       title: '',
@@ -29,24 +35,45 @@ function CategoryAlert() {
       categoryId: '',
     });
 
-    // 카테고리 삭제 진행
+    // 카테고리 삭제
     deleteCategory({ variables: { input: { categoryId: AlertValue.categoryId } } })
       .then(result => {
         console.log('deleteCategory', result);
+        refresh(true); // 화면 새로고침
       })
       .catch(error => {
         console.error(error);
       });
+  };
 
-    refresh(true); // 상태값 업데이트 후 화면 새로고침
+  // 대분류(프로젝트) 삭제
+  const removeThisProject = () => {
+    custom_alert({
+      ...AlertValue,
+      isOpen: false,
+      title: '',
+      content: ``,
+      projectId: '',
+    });
+
+    deleteProject({ variables: { input: { projectId: AlertValue.projectId } } })
+      .then(result => {
+        console.log('deleteProject', result);
+        navigate('/home');
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
     setIsAlertOpen(AlertValue.isOpen);
   }, [AlertValue]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (loadingCategory) return <div>Loading...</div>;
+  if (errorCategory) return <div>Error: {errorCategory.message}</div>;
+  if (loadingProject) return <div>Loading...</div>;
+  if (errorProject) return <div>Error: {errorProject.message}</div>;
 
   return (
     <>
@@ -67,7 +94,10 @@ function CategoryAlert() {
               <button className="w-1/2 text-gr-700 border-r border-gr-500" onClick={closeAlert}>
                 취소
               </button>
-              <button className="w-1/2 text-pm-500" onClick={handleRemoveClick}>
+              <button
+                className="w-1/2 text-pm-500"
+                onClick={AlertValue.categoryId ? removeThisCategory : removeThisProject}
+              >
                 삭제하기
               </button>
             </div>
@@ -78,4 +108,4 @@ function CategoryAlert() {
   );
 }
 
-export default CategoryAlert;
+export default CustomAlert;

@@ -1,10 +1,11 @@
 import { makeVar } from '@apollo/client';
 
-const category_alert = makeVar({
+const custom_alert = makeVar({
   isOpen: false,
   title: '',
   content: '',
   categoryId: '',
+  projectId: '',
 });
 
-export default category_alert;
+export default custom_alert;

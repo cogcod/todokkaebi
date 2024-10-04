@@ -15,7 +15,6 @@ function Complete() {
       .then(response => {
         if (response.data && response.data.getProject.project) {
           setCompleteList(response.data.getProject.project.categories);
-          console.log('ccc', response.data.getProject.project.categories);
         }
       })
       .catch(err => {

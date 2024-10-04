@@ -12,7 +12,9 @@ import projectIdValue from '../../modules/projectId';
 import { useLazyQuery, useReactiveVar } from '@apollo/client';
 import { GET_PROJECT_DETAIL } from '../../query/query';
 import { ProjectDetail } from '../../utils/interface';
-import CategoryAlert from '../Common/CategoryAlert';
+
+import custom_alert from '../../modules/custom_alert';
+import CustomAlert from '../Common/CustomAlert';
 
 function Projects() {
   const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
@@ -20,6 +22,7 @@ function Projects() {
   const [activeTab, setActiveTab] = useState<number>(1); // 초기 탭을 숫자로 설정
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
+  const alertState = useReactiveVar(custom_alert);
 
   const [projectDetail, setProjectDetail] = useState<ProjectDetail | null>(null); // 대분류 상세
 
@@ -41,8 +44,15 @@ function Projects() {
   const moveToEditPage = () => {
     alert('준비중입니다');
   };
-  const removeThisCard = () => {
-    alert('준비중입니다');
+  const removeThisProject = () => {
+    custom_alert({
+      ...alertState,
+      isOpen: true,
+      title: '목표 삭제',
+      content: `${projectDetail?.name}\n
+      목표를 삭제하시겠어요?`,
+      projectId: `${projectDetail?.id}`,
+    });
   };
 
   useEffect(() => {
@@ -123,7 +133,7 @@ function Projects() {
                   <p className="text-gr-700 text-16">수정</p>
                   <Edit />
                 </li>
-                <li onClick={removeThisCard} className="flex-center justify-between pl-20 py-8 pr-8">
+                <li onClick={removeThisProject} className="flex-center justify-between pl-20 py-8 pr-8">
                   <p className="text-red text-16">삭제</p>
                   <Remove />
                 </li>
@@ -182,7 +192,7 @@ function Projects() {
         </div>
       </div>
       <Navigation />
-      <CategoryAlert />
+      <CustomAlert />
     </>
   );
 }
