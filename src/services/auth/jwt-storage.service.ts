@@ -14,4 +14,7 @@ export const JwtStorageService = {
   removeToken: (): void => {
     localStorage.removeItem('accessToken');
   },
+  removeRefreshToken: (): void => {
+    localStorage.removeItem('refreshToken');
+  },
 };

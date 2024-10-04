@@ -25,6 +25,13 @@ export const appUtils = {
     return !!token;
   },
   /**
+   * 로그아웃
+   */
+  logout: () => {
+    JwtStorageService.removeToken();
+    JwtStorageService.removeRefreshToken();
+  },
+  /**
    * UTC 날짜 형식 변환
    * @param utcDateString
    * @returns 2020.04.02
