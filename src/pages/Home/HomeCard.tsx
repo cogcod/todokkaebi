@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { appUtils, GaugeBar } from '../../utils/utils';
 import { ReactComponent as Alarm } from '/src/assets/icons/card_alarm.svg';
+import { ReactComponent as Avatar } from '/src/assets/images/avatar_default.svg';
 import alertValue from '../../modules/alert';
 import { useNavigate } from 'react-router-dom';
 import { Projects } from '../../utils/interface';
@@ -30,7 +31,7 @@ function HomeCard({ data }: { data: Projects }) {
       className="flex flex-col mb-20 w-full h-[6.625rem] rounded-16 pt-16 px-16 pb-12 bg-white"
     >
       <div className="flex justify-between">
-        <div className="w-[42px] h-[42px] bg-gr-400"></div>
+        <Avatar />
         <div className="flex flex-col pl-12">
           <div className="flex justify-between items-center mb-8">
             <div className="truncate w-[12.75rem] text-18 font-semi">{data.name}</div>

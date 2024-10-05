@@ -4,6 +4,12 @@ import { ReactComponent as Minus } from '/src/assets/icons/popup_minus.svg';
 import { ReactComponent as Calendar } from '/src/assets/icons/calendar.svg';
 
 function PopupSettingCardList({ onRemove }: { onRemove: () => void }) {
+  /**
+   * 현재 예상 상황
+   *  - 소분류의 이름/시작날짜/종료날짜를 apollo에 배열로 저장
+   *  - '저장하기' 클릭 시 apollo에 저장된 배열을 for문을 돌려서
+   *  - 배열 갯수만큼 api 요청 중
+   */
   return (
     <div>
       {/* 소분류 태스크 설정 */}

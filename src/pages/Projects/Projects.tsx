@@ -12,6 +12,7 @@ import projectIdValue from '../../modules/projectId';
 import { useLazyQuery, useReactiveVar } from '@apollo/client';
 import { GET_PROJECT_DETAIL } from '../../query/query';
 import { ProjectDetail } from '../../utils/interface';
+import { ReactComponent as Avatar } from '/src/assets/images/avatar_default.svg';
 
 import custom_alert from '../../modules/custom_alert';
 import CustomAlert from '../Common/CustomAlert';
@@ -102,7 +103,7 @@ function Projects() {
         <div className="relative flex flex-col justify-between bg-white w-full">
           <div className="flex flex-col w-full h-[6.625rem] pt-24 px-20 pb-20 bg-white">
             <div className="flex justify-between items-center">
-              <div className="w-[42px] h-[42px] bg-gr-400"></div>
+              <Avatar />
               <div className="flex flex-col w-[18.125rem]">
                 <div className="flex justify-between items-center mb-8">
                   <div className="truncate w-[12.75rem] text-18 font-semi">{projectDetail?.name} </div>

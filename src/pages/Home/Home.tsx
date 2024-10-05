@@ -5,16 +5,18 @@ import HomeCard from './HomeCard';
 import DefaultAlert from '../Common/DefaultAlert';
 import alertValue from '../../modules/alert';
 import { appUtils } from '../../utils/utils';
-import { useQuery } from '@apollo/client';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../../query/query';
 import { useEffect, useState } from 'react';
 import PopUpSetting from '../Common/PopUpSetting';
 import { ReactComponent as Kkaebi } from '/src/assets/images/kkaebi.svg';
+import refresh_home from '../../modules/refresh_home';
 
 function Home() {
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
   const { loading, error, data } = useQuery(GET_ALL_PROJECTS, { skip: !appUtils.isLoggedIn() });
   const [projectsData, setProjectsData] = useState([]);
+  const refreshHome = useReactiveVar(refresh_home);
 
   // 다짐하기
   const handleMakeAPromise = () => {
@@ -26,8 +28,10 @@ function Home() {
   };
 
   useEffect(() => {
+    console.log('refresh_home', refreshHome);
+    refresh_home(false); // TODO: 리프레시 에러 수정
     if (data && data.getAllProjects.success === true) setProjectsData(data?.getAllProjects.projects);
-  }, [data]);
+  }, [data, refreshHome]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

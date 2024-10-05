@@ -4,14 +4,15 @@ import PopupSettingCard from './PopupSettingCard';
 import { useEffect, useState } from 'react';
 import popup_setting from '../../modules/popup_setting';
 import { useMutation, useReactiveVar } from '@apollo/client';
-import { CREATE_CATEGORY, CREATE_PROJECT } from '../../query/mutation';
-import category_name from '../../modules/category_name';
+import { CREATE_PROJECT } from '../../query/mutation';
+// import category_name from '../../modules/category_name';
+import refresh_home from '../../modules/refresh_home';
 
 function PopUpSetting() {
   const [createProject, { error: errorCreateProject }] = useMutation(CREATE_PROJECT);
-  const [createCategory, { error: errorCreateCategory }] = useMutation(CREATE_CATEGORY);
+  // const [createCategory, { error: errorCreateCategory }] = useMutation(CREATE_CATEGORY);
   const popupState = useReactiveVar(popup_setting);
-  const categoryName = useReactiveVar(category_name);
+  // const categoryName = useReactiveVar(category_name);
 
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
   // const [showEmptyCategory, setShowEmptyCategory] = useState<number[]>([Date.now()]);
@@ -42,22 +43,24 @@ function PopUpSetting() {
       // 프로젝트 생성
       createProject({ variables: { input: { name: projectName } } })
         .then(res => {
-          const newProjectId = res.data.createProject.project.id;
+          console.log('createProject', res);
           setProjectName('');
-          if (newProjectId && categoryName) {
-            // 카테고리 생성
-            createCategory({ variables: { input: { projectId: newProjectId, name: categoryName } } })
-              .then(res => {
-                const newCategoryId = res.data.createProject.project.id;
-                console.log('createCategory', newCategoryId);
-                category_name('');
-              })
-              .catch(err => {
-                console.error('createCategory', err);
-              });
-          } else {
-            throw new Error('프로젝트 ID 또는 카테고리 이름이 없습니다.');
-          }
+          refresh_home(true); // 홈 화면 새로고침
+          // const newProjectId = res.data.createProject.project.id;
+          // if (newProjectId && categoryName) {
+          //   // 카테고리 생성
+          //   createCategory({ variables: { input: { projectId: newProjectId, name: categoryName } } })
+          //     .then(res => {
+          //       const newCategoryId = res.data.createProject.project.id;
+          //       console.log('newCategoryId', newCategoryId);
+          //       category_name('');
+          //     })
+          //     .catch(err => {
+          //       console.error('createCategory', err);
+          //     });
+          // } else {
+          //   throw new Error('프로젝트 ID 또는 카테고리 이름이 없습니다.');
+          // }
         })
         .catch(err => {
           console.error('createProject', err);
@@ -72,7 +75,7 @@ function PopUpSetting() {
   }, [popupState]);
 
   if (errorCreateProject) return <div>Error: {errorCreateProject.message}</div>;
-  if (errorCreateCategory) return <div>Error: {errorCreateCategory.message}</div>;
+  // if (errorCreateCategory) return <div>Error: {errorCreateCategory.message}</div>;
 
   return (
     <>
