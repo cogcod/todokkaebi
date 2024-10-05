@@ -8,7 +8,7 @@ import { appUtils } from '../../utils/utils';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../../query/query';
 import { useEffect, useState } from 'react';
-import PopUp from '../Common/PopUp';
+import PopUpSetting from '../Common/PopUpSetting';
 
 function Home() {
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
@@ -70,7 +70,7 @@ function Home() {
         </div>
         <Navigation />
         <DefaultAlert />
-        <PopUp />
+        <PopUpSetting />
       </div>
     </>
   );

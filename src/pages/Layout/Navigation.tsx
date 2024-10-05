@@ -4,6 +4,7 @@ import { ReactComponent as Plus } from '/src/assets/icons/navi_plus.svg';
 import { useNavigate } from 'react-router-dom';
 import alertValue from '../../modules/alert';
 import { appUtils } from '../../utils/utils';
+import popup_setting from '../../modules/popup_setting';
 
 function Navigation() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Navigation() {
     if (!appUtils.isLoggedIn()) {
       alertValue(true);
     } else {
-      alert('준비중입니다');
+      popup_setting(true);
     }
   };
 

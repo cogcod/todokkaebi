@@ -33,6 +33,10 @@
     background-color: theme('colors.white');
     overflow: hidden;
   }
+  /* datepicker 위치 커스텀 */
+  .react-datepicker-popper {
+    transform: translate(120px, 139px);
+  }
 }
 
 /* custom style */
@@ -74,7 +78,7 @@
   .item:not(:first-child) {
     margin-top: 1.25rem;
   }
-  /* 체크아이콘 */
+  /* 체크아이콘 - primary */
   .checked_icon_pm:checked {
     border: none;
     background-size: 11px 8px;
@@ -83,6 +87,7 @@
     background-position: center center;
     background-image: url('/assets/icons/checked_pm.png');
   }
+  /* 체크아이콘 - gray */
   .checked_icon_gr:checked {
     border: none;
     background-size: 11px 8px;
@@ -90,6 +95,10 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url('/assets/icons/checked_gr.png');
+  }
+  /* 들여쓰기 */
+  .text-indent {
+    text-indent: 0.75rem;
   }
 }
 
