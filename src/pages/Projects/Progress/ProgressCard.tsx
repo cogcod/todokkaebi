@@ -26,7 +26,6 @@ function ProgressCard({ data }: { data: Categories }) {
   };
 
   useEffect(() => {
-    console.log('???', data);
     // menuRef.current(플로팅 메뉴) 있으면 닫기
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {

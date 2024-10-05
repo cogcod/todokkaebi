@@ -4,7 +4,7 @@ import PopupSettingCardList from './PopupSettingCardList';
 import { useState } from 'react';
 
 function PopupSettingCard({ onRemove }: { onRemove: () => void }) {
-  const [showEmptyTask, setShowEmptyTask] = useState<number[]>([]);
+  const [showEmptyTask, setShowEmptyTask] = useState<number[]>([Date.now()]);
 
   // 하위목표 추가 버튼
   const addTaskGoal = () => {
@@ -25,8 +25,12 @@ function PopupSettingCard({ onRemove }: { onRemove: () => void }) {
         </div>
       </div>
       <div className="flex justify-between mb-4 py-8 border-b border-gr-200">
-        <div className="flex-center">
-          <div className="ml-1 text-gr-800 text-15">중분류 제목</div>
+        <div className="w-full">
+          <input
+            type="text"
+            placeholder="타이틀을 입력하세요"
+            className="truncate w-full mx-1 focus:outline-none text-gr-800 text-15"
+          />
         </div>
       </div>
       {/* 소분류 태스크 설정 */}

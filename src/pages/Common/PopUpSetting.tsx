@@ -1,5 +1,5 @@
 import { ReactComponent as Close } from '/src/assets/icons/popup_close.svg';
-import { ReactComponent as Avatar } from '/src/assets/icons/avatar.svg';
+import { ReactComponent as DefaultAvatar } from '/src/assets/images/avatar_default.svg';
 import PopupSettingCard from './PopupSettingCard';
 import { useEffect, useState } from 'react';
 import popup_setting from '../../modules/popup_setting';
@@ -49,7 +49,7 @@ function PopUpSetting() {
                   className="truncate bg-white rounded-8 w-[calc(100%-3.75rem)] mr-12 focus:outline-none text-indent"
                 ></input>
                 <div className="flex-center w-[48px] h-[48px] bg-white rounded-12">
-                  <Avatar />
+                  <DefaultAvatar />
                 </div>
               </div>
             </div>
