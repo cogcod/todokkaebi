@@ -15,7 +15,7 @@ function PopUpSetting() {
   // const categoryName = useReactiveVar(category_name);
 
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
-  // const [showEmptyCategory, setShowEmptyCategory] = useState<number[]>([Date.now()]);
+  const [showEmptyCategory, setShowEmptyCategory] = useState<number[]>([Date.now()]);
   const [projectName, setProjectName] = useState('');
 
   // 프로젝트명 입력 인풋값 저장
@@ -29,13 +29,13 @@ function PopUpSetting() {
   };
 
   // 중목표 추가 버튼
-  // const addEmptyCategory = () => {
-  //   setShowEmptyCategory([...showEmptyCategory, Date.now()]); // 현재 시간을 고유Id로 추가
-  // };
+  const addEmptyCategory = () => {
+    setShowEmptyCategory([...showEmptyCategory, Date.now()]); // 현재 시간을 고유Id로 추가
+  };
   // 삭제 버튼
-  // const removeCategoryGoal = (idToRemove: number) => {
-  //   setShowEmptyCategory(showEmptyCategory.filter(id => id !== idToRemove)); // 선택된 인덱스만 제외하고 배열 업데이트
-  // };
+  const removeCategoryGoal = (idToRemove: number) => {
+    setShowEmptyCategory(showEmptyCategory.filter(id => id !== idToRemove)); // 선택된 인덱스만 제외하고 배열 업데이트
+  };
 
   // 저장하기 버튼
   const onSaveSettings = () => {
@@ -105,17 +105,16 @@ function PopUpSetting() {
               </div>
             </div>
             <div className="mt-20">
-              <PopupSettingCard />
-              {/* {showEmptyCategory.map(id => (
+              {showEmptyCategory.map(id => (
                 <PopupSettingCard key={id} onRemove={() => removeCategoryGoal(id)} />
-              ))} */}
+              ))}
             </div>
-            {/* <div
+            <div
               onClick={addEmptyCategory}
               className="flex-center w-[64px] h-[24px] mt-12 bg-gr-700 rounded-4 text-white text-12"
             >
               + 중목표
-            </div> */}
+            </div>
           </div>
           <div onClick={onSaveSettings} className="flex-center my-[14px] bg-pm-500 h-[48px] mx-20 rounded-8 text-white">
             저장하기

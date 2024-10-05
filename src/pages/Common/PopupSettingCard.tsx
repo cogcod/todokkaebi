@@ -1,11 +1,10 @@
-// import { ReactComponent as Remove } from '/src/assets/icons/popup_card_remove.svg';
+import { ReactComponent as Remove } from '/src/assets/icons/popup_card_remove.svg';
 import { ReactComponent as Plus } from '/src/assets/icons/popup_plus.svg';
 import PopupSettingCardList from './PopupSettingCardList';
 import { useEffect, useState } from 'react';
 import category_name from '../../modules/category_name';
 
-// function PopupSettingCard({ onRemove }: { onRemove: () => void }) {
-function PopupSettingCard() {
+function PopupSettingCard({ onRemove }: { onRemove: () => void }) {
   const [showEmptyTask, setShowEmptyTask] = useState<number[]>([Date.now()]);
   const [categoryName, setCategoryName] = useState('');
 
@@ -32,9 +31,9 @@ function PopupSettingCard() {
       {/* 중분류 제목 설정 */}
       <div className="flex-center justify-between mb-8">
         <div className="flex-center text-pm-500 text-12  font-semi">목표 설정</div>
-        {/* <div onClick={onRemove} className="flex-center w-[18px] h-[18px] bg-gr-200">
+        <div onClick={onRemove} className="flex-center w-[18px] h-[18px] bg-gr-200">
           <Remove />
-        </div> */}
+        </div>
       </div>
       <div className="flex justify-between mb-4 py-8 border-b border-gr-200">
         <div className="w-full">

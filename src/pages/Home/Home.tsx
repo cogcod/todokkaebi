@@ -8,7 +8,7 @@ import { appUtils } from '../../utils/utils';
 import { useQuery, useReactiveVar } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../../query/query';
 import { useEffect, useState } from 'react';
-import PopUpSetting from '../Common/PopUpSetting';
+// import PopUpSetting from '../Common/PopUpSetting';
 import { ReactComponent as Kkaebi } from '/src/assets/images/kkaebi.svg';
 import refresh_home from '../../modules/refresh_home';
 
@@ -78,7 +78,6 @@ function Home() {
         </div>
         <Navigation />
         <DefaultAlert />
-        <PopUpSetting />
       </div>
     </>
   );
