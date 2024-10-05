@@ -39,14 +39,17 @@ function PopUpSetting() {
   // 저장하기 버튼
   const onSaveSettings = () => {
     if (projectName) {
+      // 프로젝트 생성
       createProject({ variables: { input: { name: projectName } } })
         .then(res => {
           const newProjectId = res.data.createProject.project.id;
           setProjectName('');
           if (newProjectId && categoryName) {
+            // 카테고리 생성
             createCategory({ variables: { input: { projectId: newProjectId, name: categoryName } } })
               .then(res => {
-                console.log('createCategory', res);
+                const newCategoryId = res.data.createProject.project.id;
+                console.log('createCategory', newCategoryId);
                 category_name('');
               })
               .catch(err => {

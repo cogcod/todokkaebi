@@ -45,7 +45,8 @@ function ProgressCard({ data }: { data: Categories }) {
     <div className="relative bg-white rounded-12 pt-16 px-20 pb-20 mb-20">
       <div className="flex flex-col mb-4 border-b border-gr-200">
         <div className="flex-center justify-between mb-8">
-          <div className="flex-center text-pm-600 text-10 w-[48px] h-[20px] bg-pm-400 rounded-4">0%</div>
+          {/* <div className="flex-center text-pm-600 text-10 w-[48px] h-[20px] bg-pm-400 rounded-4">0%</div> */}
+          <div className="flex-center text-pm-600 text-10 w-[48px] h-[20px]  rounded-4"></div>
           <div onClick={openEditMenu}>
             <Dot />
           </div>

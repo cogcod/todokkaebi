@@ -13,7 +13,7 @@ function CompleteCard({ data }: { data: Categories }) {
           <div className="ml-1 text-gr-800 text-15">{data?.name}</div>
         </div>
         <div className="flex-center">
-          {show_date() ? (
+          {show_date() && data.endedAt && data.actualEndDate ? (
             <div className="text-gr-600 text-12 mr-8">
               {appUtils.convertUTCDateToString(data.endedAt)}&nbsp;/&nbsp;
               {appUtils.convertUTCDateToString(data.actualEndDate)}

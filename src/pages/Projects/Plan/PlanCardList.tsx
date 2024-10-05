@@ -7,7 +7,7 @@ function PlanCardList({ data }: { data: Tasks }) {
     <div className="flex-center justify-between mt-8 pl-8 py-10">
       <div className="text-gr-700 text-12">{data.title}</div>
       <div className="flex-center">
-        {show_date() ? (
+        {show_date() && data.startDate && data.endDate ? (
           <div className="text-gr-600 text-10 mr-8">
             {appUtils.convertUTCDateToString(data.startDate)}&nbsp;~&nbsp;
             {appUtils.convertUTCDateToString(data.endDate)}

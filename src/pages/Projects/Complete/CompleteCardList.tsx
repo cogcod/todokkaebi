@@ -7,7 +7,7 @@ function CompleteCardList({ data }: { data: Tasks }) {
     <div className="flex-center justify-between mt-8 pl-8 py-10">
       <div className="truncate w-[132px] text-gr-700 text-12">{data.title}</div>
       <div className="flex-center">
-        {show_date() ? (
+        {show_date() && data.endDate && data.actualEndDate ? (
           <div className="text-gr-600 text-10 mr-8">
             {appUtils.convertUTCDateToString(data.endDate)}&nbsp;/&nbsp;
             {appUtils.convertUTCDateToString(data.actualEndDate)}

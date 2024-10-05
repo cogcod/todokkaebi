@@ -39,7 +39,7 @@ function ProgressCardList({ data }: { data: Tasks }) {
     <div className="flex-center justify-between pl-8 py-12">
       <div className="flex flex-col">
         <div className={`text-12 ${isChecked ? 'line-through text-gr-500' : 'text-gr-700'}`}>{data?.title}</div>
-        {show_date() ? (
+        {show_date() && data.startDate && data.endDate ? (
           <div className="text-gr-500 text-10">
             {appUtils.convertUTCDateToString(data.startDate)}&nbsp;~&nbsp;
             {appUtils.convertUTCDateToString(data.endDate)}
