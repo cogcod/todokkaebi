@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Avatar } from '/src/assets/icons/avatar.svg';
+import { ReactComponent as Logo } from '/src/assets/images/logo.svg';
 import { appUtils } from '../../utils/utils';
 import alertValue from '../../modules/alert';
 
@@ -21,7 +22,9 @@ function Header() {
   return (
     <div className="flex shrink-0 justify-between items-center px-20 w-full h-[60px] bg-white">
       {/* <div className="flex shrink-0 justify-between items-center absolute top-0 left-0 w-full h-[60px] bg-white"> */}
-      <div onClick={moveToHome}>LOGO</div>
+      <div onClick={moveToHome}>
+        <Logo />
+      </div>
       <div className="h-[36px] w-[36px] flex-center" onClick={moveToMyPage}>
         <Avatar />
       </div>

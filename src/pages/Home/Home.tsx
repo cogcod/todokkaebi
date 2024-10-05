@@ -9,6 +9,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../../query/query';
 import { useEffect, useState } from 'react';
 import PopUpSetting from '../Common/PopUpSetting';
+import { ReactComponent as Kkaebi } from '/src/assets/images/kkaebi.svg';
 
 function Home() {
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
@@ -43,13 +44,16 @@ function Home() {
             </div>
             <div>
               <div className="text-16 font-semi text-black-100">{currentDate}</div>
-              <div className="flex justify-between items-center mt-12 w-full h-[48px] bg-pm-400 rounded-12">
+              <div className="relative flex justify-between items-center mt-12 w-full h-[48px] bg-pm-400 rounded-12">
                 <p className="pl-20 text-14 text-pm-700 font-semi">🔥 나의 첫 다짐을 작성해주세요 !</p>
                 <div
                   onClick={handleMakeAPromise}
                   className="flex-center text-center w-[57px] h-[24px] mr-12 bg-pm-500 text-white text-12 font-semi rounded-8"
                 >
                   다짐하기
+                </div>
+                <div className="absolute -top-[46.5px] right-4">
+                  <Kkaebi />
                 </div>
               </div>
             </div>

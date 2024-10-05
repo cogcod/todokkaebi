@@ -28,7 +28,7 @@ function PopupSettingCard({ onRemove }: { onRemove: () => void }) {
         <div className="w-full">
           <input
             type="text"
-            placeholder="타이틀을 입력하세요"
+            placeholder="목표명을 입력하세요"
             className="truncate w-full mx-1 focus:outline-none text-gr-800 text-15"
           />
         </div>

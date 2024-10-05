@@ -15,13 +15,17 @@ function PopUpSetting() {
     setIsPopupOpen(false);
   };
 
-  // 하위목표 추가 버튼
+  // 하위 목표 추가 버튼
   const addEmptyCategory = () => {
     setShowEmptyCategory([...showEmptyCategory, Date.now()]); // 현재 시간을 고유Id로 추가
   };
   // 삭제 버튼
   const removeCategoryGoal = (idToRemove: number) => {
     setShowEmptyCategory(showEmptyCategory.filter(id => id !== idToRemove)); // 선택된 인덱스만 제외하고 배열 업데이트
+  };
+  // 저장하기 버튼
+  const onSaveSettings = () => {
+    closePopupSetting();
   };
 
   useEffect(() => {
@@ -40,11 +44,11 @@ function PopUpSetting() {
           </div>
           <div className="inner-contents-popup overflow-auto">
             <div className="flex flex-col">
-              <div className="text-pm-500 text-12 font-semi mb-8">프로젝트 명</div>
+              <div className="text-pm-500 text-12 font-semi mb-8">프로젝트명</div>
               <div className="flex justify-between w-full">
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder="프로젝트명을 입력하세요"
                   required
                   className="truncate bg-white rounded-8 w-[calc(100%-3.75rem)] mr-12 focus:outline-none text-indent"
                 ></input>
@@ -65,7 +69,9 @@ function PopUpSetting() {
               + 중목표
             </div>
           </div>
-          <div className="flex-center my-[14px] bg-pm-500 h-[48px] mx-20 rounded-8 text-white">저장하기</div>
+          <div onClick={onSaveSettings} className="flex-center my-[14px] bg-pm-500 h-[48px] mx-20 rounded-8 text-white">
+            저장하기
+          </div>
         </div>
       )}
     </>
