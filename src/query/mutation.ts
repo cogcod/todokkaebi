@@ -52,23 +52,24 @@ export const REISSUE_ACCESSTOKEN = gql`
   }
 `;
 
-// 소분류 업데이트
-export const UPDATE_TASK = gql`
-  mutation UpdateTask($input: UpdateTaskInput!) {
-    updateTask(input: $input) {
+/**
+ * 대분류(프로젝트) 생성
+ * input: name
+ */
+export const CREATE_PROJECT = gql`
+  mutation CreateProject($input: CreateProjectInput!) {
+    createProject(input: $input) {
       success
-      task {
+      project {
         id
-        actualStartDate
-        actualEndDate
-        startDate
+        name
+        userId
+        totalTask
+        completeTask
         endDate
-        title
-        check
-        status
-        categoryId
-        totalProjectTask
-        completeProjectTask
+        startDate
+        totalTask
+        completeTask
       }
     }
   }
@@ -92,6 +93,30 @@ export const DELETE_PROJECT = gql`
   }
 `;
 
+/**
+ * 중분류(카테고리) 생성
+ * input : {
+ *  projectId: string;
+ *  name: string;
+ * }
+ */
+export const CREATE_CATEGORY = gql`
+  mutation CreateCategory($input: CreateCategoryInput!) {
+    createCategory(input: $input) {
+      success
+      category {
+        id
+        name
+        projectId
+        actualEndDate
+        actualStartDate
+        startedAt
+        endedAt
+      }
+    }
+  }
+`;
+
 // 중분류(카테고리) 삭제
 export const DELETE_CATEGORY = gql`
   mutation DeleteCategory($input: DeleteCategoryInput!) {
@@ -105,6 +130,59 @@ export const DELETE_CATEGORY = gql`
         actualStartDate
         startedAt
         endedAt
+      }
+    }
+  }
+`;
+
+/**
+ * 소분류(태스크) 생성
+ * input: {
+ *  title: string;
+ *  startDate: Date;
+ *  endDate: Date;
+ *  categoryId: string;
+ *  projectId: string;
+ * }
+ */
+export const CREATE_TASK = gql`
+  mutation CreateTask($input: CreateTaskInput!) {
+    createTask(input: $input) {
+      success
+      task {
+        id
+        actualStartDate
+        actualEndDate
+        startDate
+        endDate
+        title
+        check
+        status
+        categoryId
+        totalProjectTask
+        completeProjectTask
+      }
+    }
+  }
+`;
+
+// 소분류 업데이트
+export const UPDATE_TASK = gql`
+  mutation UpdateTask($input: UpdateTaskInput!) {
+    updateTask(input: $input) {
+      success
+      task {
+        id
+        actualStartDate
+        actualEndDate
+        startDate
+        endDate
+        title
+        check
+        status
+        categoryId
+        totalProjectTask
+        completeProjectTask
       }
     }
   }
