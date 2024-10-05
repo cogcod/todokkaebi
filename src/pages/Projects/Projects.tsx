@@ -72,6 +72,7 @@ function Projects() {
       .catch(err => {
         console.error('err', err);
       });
+    if (show_date()) setIsChecked(true);
   }, []);
 
   useEffect(() => {
@@ -182,7 +183,7 @@ function Projects() {
                   type="checkbox"
                   checked={isChecked}
                   onChange={handleCheckboxChange}
-                  className="relative appearance-none form-checkbox h-18 w-18 border-[1.5px] rounded-2 border-gr-400 checked:bg-pm-500 checked:border-0 checked:bg-[url('../../assets/images/checked.png')] bg-no-repeat bg-center"
+                  className="relative checked_icon_pm appearance-none form-checkbox h-18 w-18 border-[1.5px] rounded-2 border-gr-400"
                 />
               </label>
             </div>

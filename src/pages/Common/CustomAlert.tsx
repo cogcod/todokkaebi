@@ -85,7 +85,9 @@ function CustomAlert() {
           <div className="overflow-hidden flex flex-col justify-between bg-white rounded-lg shadow-lg text-center w-[17.125rem] h-[11.125rem]">
             <div className="px-10 py-24">
               <h2 className="h-26 mb-8 text-18 font-semi">{AlertValue.title}</h2>
-              <p className="text-gr-700 font-regular text-16 mb-6">{AlertValue.content}</p>
+              <p className="text-gr-700 font-regular text-16 mb-6 whitespace-pre-line leading-14">
+                {AlertValue.content}
+              </p>
               {/* <p className="text-gr-700 font-regular text-16 mb-6">
                 변경된 내용이 저장되지 않았어요. <br /> 이대로 돌아가실 건가요?
               </p> */}

@@ -74,24 +74,6 @@ export const UPDATE_TASK = gql`
   }
 `;
 
-// 중분류(카테고리) 삭제
-export const DELETE_CATEGORY = gql`
-  mutation DeleteCategory($input: DeleteCategoryInput!) {
-    deleteCategory(input: $input) {
-      success
-      category {
-        id
-        name
-        projectId
-        actualEndDate
-        actualStartDate
-        startedAt
-        endedAt
-      }
-    }
-  }
-`;
-
 // 대분류(프로젝트) 삭제
 export const DELETE_PROJECT = gql`
   mutation DeleteProject($input: DeleteProjectInput!) {
@@ -105,6 +87,24 @@ export const DELETE_PROJECT = gql`
         completeTask
         endDate
         startDate
+      }
+    }
+  }
+`;
+
+// 중분류(카테고리) 삭제
+export const DELETE_CATEGORY = gql`
+  mutation DeleteCategory($input: DeleteCategoryInput!) {
+    deleteCategory(input: $input) {
+      success
+      category {
+        id
+        name
+        projectId
+        actualEndDate
+        actualStartDate
+        startedAt
+        endedAt
       }
     }
   }

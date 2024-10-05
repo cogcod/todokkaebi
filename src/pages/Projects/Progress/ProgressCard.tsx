@@ -9,11 +9,11 @@ import { Categories } from '../../../utils/interface';
 function ProgressCard({ data }: { data: Categories }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  // const [isChecked, setIsChecked] = useState<boolean>(false);
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-  };
+  // const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setIsChecked(e.target.checked);
+  // };
 
   const openEditMenu = () => {
     setIsOpen(true);
@@ -26,6 +26,7 @@ function ProgressCard({ data }: { data: Categories }) {
   };
 
   useEffect(() => {
+    console.log('???', data);
     // menuRef.current(플로팅 메뉴) 있으면 닫기
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -58,7 +59,7 @@ function ProgressCard({ data }: { data: Categories }) {
           {/* Select box */}
           <div>
             <div className="p-4">
-              <label className="flex items-center space-x-2">
+              {/* <label className="flex items-center space-x-2">
                 <span className="text-gr-600 text-12 font-semi">전체선택</span>
                 <input
                   type="checkbox"
@@ -66,7 +67,7 @@ function ProgressCard({ data }: { data: Categories }) {
                   onChange={handleCheckboxChange}
                   className="relative appearance-none form-checkbox h-18 w-18 border-[1.5px] rounded-2 border-gr-400 checked:bg-gr-100 checked:border-0 checked:bg-[url('../../assets/images/checked.png')] bg-no-repeat bg-center"
                 />
-              </label>
+              </label> */}
             </div>
           </div>
         </div>

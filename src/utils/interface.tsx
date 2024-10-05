@@ -7,7 +7,7 @@ export interface GaugeBarProps {
 // GET_ALL_PROJECTS : 대분류
 export interface ProjectsData {
   success: boolean;
-  projects: Projects[];
+  projects: [];
 }
 export interface Projects {
   id: string;

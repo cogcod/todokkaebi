@@ -7,7 +7,7 @@ import { TASK_STATE } from '../../../common/enums/task-state.enum';
 import refresh_plan from '../../../modules/refresh_plan';
 
 function Plan() {
-  const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
+  const [getProjects, { error }] = useLazyQuery(GET_PROJECT_DETAIL);
   const selecetedCardId = useReactiveVar(projectIdValue);
   const [plans, setPlans] = useState([]);
   const refreshState = useReactiveVar(refresh_plan);
@@ -25,7 +25,6 @@ function Plan() {
       });
   }, [refreshState]);
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (

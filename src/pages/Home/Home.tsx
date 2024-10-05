@@ -8,6 +8,7 @@ import { appUtils } from '../../utils/utils';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../../query/query';
 import { useEffect, useState } from 'react';
+import PopUp from '../Common/PopUp';
 
 function Home() {
   const currentDate = dayjs().format('YYYY년 MM월 DD일');
@@ -32,7 +33,7 @@ function Home() {
 
   return (
     <>
-      <div className="h-full bg-gr-50">
+      <div className="relative h-full bg-gr-50">
         <Header />
         <div className="h-inner">
           <div className="flex flex-col justify-between h-[13.4375rem] bg-white p-20">
@@ -69,6 +70,7 @@ function Home() {
         </div>
         <Navigation />
         <DefaultAlert />
+        <PopUp />
       </div>
     </>
   );

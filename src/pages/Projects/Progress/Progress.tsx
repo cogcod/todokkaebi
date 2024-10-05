@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { TASK_STATE } from '../../../common/enums/task-state.enum';
 
 function Progress() {
-  const [getProjects, { loading, error }] = useLazyQuery(GET_PROJECT_DETAIL);
+  const [getProjects, { error }] = useLazyQuery(GET_PROJECT_DETAIL);
   const selecetedCardId = useReactiveVar(projectIdValue);
   const [progress, setProgress] = useState([]);
 
@@ -23,7 +23,6 @@ function Progress() {
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (

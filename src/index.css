@@ -41,17 +41,23 @@
   .h-inner {
     height: calc(100% - 120px);
   }
-  /* 컨텐츠 영역 */
+  /* 컨텐츠 영역 - 홈 */
   .inner-contents-home {
     padding: 1.5rem 1.25rem 0;
     overflow-y: auto;
     flex-grow: 1;
     height: calc(100% - 13.375rem);
   }
+  /* 컨텐츠 영역 - 탭 */
   .inner-contents-other {
     padding: 1.5rem 1.25rem 0;
     overflow-y: auto;
     height: calc(100% - 9.625rem);
+  }
+  /* 컨텐츠 영역 - 팝업 */
+  .inner-contents-popup {
+    padding: 1.5rem 1.25rem 0;
+    height: calc(100% - 8.875rem);
   }
   /* 풀 버튼 */
   .btn-full {
@@ -67,6 +73,23 @@
   /* list - 첫번째 요소를 제외한 나머지 */
   .item:not(:first-child) {
     margin-top: 1.25rem;
+  }
+  /* 체크아이콘 */
+  .checked_icon_pm:checked {
+    border: none;
+    background-size: 11px 8px;
+    background-color: theme('colors.pm-500');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('/assets/icons/checked_pm.png');
+  }
+  .checked_icon_gr:checked {
+    border: none;
+    background-size: 11px 8px;
+    background-color: theme('colors.gr-100');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('/assets/icons/checked_gr.png');
   }
 }
 
